@@ -1,4 +1,4 @@
-# whats-upp-css
+# whats-up-css
 Fellesområde for workshop til fagdagen
 
 ## Setup
