@@ -9,7 +9,7 @@ html { box-sizing: border-box; }
 body{
 	background-color: #FFFFFF;
 	color: #002868;
-	font-family: 'Droid Serif', serif;
+	font-family: 'Droid Serif', 'Times New Roman', serif;
 	font-size: 16px;
 	margin: 0;
 }
@@ -25,7 +25,7 @@ section {
 }
 
 h1,h2,h3,h4{
-	font-family: 'Karla', sans-serif;
+	font-family: 'Karla', Arial, Helvetica, sans-serif;
 }
 
 h1{ font-size: 42px; }
@@ -88,7 +88,7 @@ header {
   width: 350px;
   height: 350px;
   text-align: center;
-  font-family: 'Lobster', cursive;
+  font-family: 'Lobster', Arial, Helvetica, sans-serif;
   font-size: 42px;
   background-color: #000000;
   color: #FFFFFF;
@@ -126,7 +126,9 @@ footer{
 	.flag.left{ width: 100%; }	
 	.flag.left .star { 
 		float: none;
+    height: 300px;
 		margin: 0 auto;
+    width: 300px;
 	}
 	.flag.right{ display: none; }
 
