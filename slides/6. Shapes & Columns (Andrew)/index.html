@@ -28,6 +28,15 @@ Andrew Byles
 
 # Shape
 
+/* -webkit-clip-path: url("#myClip"); */
+  
+/* iOS support */
+ -webkit-mask: url(clip.svg);/*Chrome,Safari*/
+-webkit-clip-path: url(clip.svg);
+
+/* Firefox*/
+clip-path: url(clip.svg#svgClip);
+
     </textarea>
 
   <script src="../../node_modules/remark-bekk/vendor/remark.min.js" type="text/javascript"></script>

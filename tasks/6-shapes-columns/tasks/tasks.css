@@ -1,0 +1,82 @@
+/*
+# You can find the final result in the answer directory, use this or the screen shots in the 
+# design-layouts directory to see what you should be creating.
+#
+# Remeber that Chrome still requires the -webkit prefix on the clip-path property.
+*/
+
+
+/* 
+
+## TASK ONE
+
+# Create the white stars that represent the stars on the American flag in the header.
+
+- Remember we are ceating a responsive site.
+
+ */
+
+.star { }
+
+
+/*
+
+## TASK TWO
+	
+# Wrap the text around the left side of the trump image.
+
+- Hint: trump-1.png has a transparent background to help you. 
+
+*/
+
+.trump-one { }
+
+
+/*
+
+## TASK THREE
+
+# Put the label text in a circle and wrap the body text around it.
+
+- Remeber that the designer wants the text rotated -8 degrees!
+
+*/
+
+.label-sticker { }
+
+
+/*
+
+##TASK FOUR
+
+# Create arrows on the left and right of the text.
+# The blue arrow on the left of the text and the red on the right.
+
+- Remember that the designer has specified that the arrows will lay -100px outside 
+	the main layout and the text will be spaced 15px from the arrows.
+
+*/
+
+.arrow.up { }
+
+.arrow.left { }
+
+.arrow.down { }
+
+.arrow.right { }
+
+
+/*
+
+## TASK FIVE
+
+# The design specifies a responsive column layout, where there are three columns on desk-top, two on pad and one on mobile.
+# The columns should be spaced 40px appart and have a column divider (rule) of 1px in blue #d9e4f4
+
+# The image at the start of the text should be a maximum of 60% column width and clipped into a circle, the text should flow around it also.
+
+*/
+
+.columns { }
+
+.columns img { }
