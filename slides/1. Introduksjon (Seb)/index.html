@@ -5,6 +5,36 @@
     <title>BEKK-theme for remark</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../../node_modules/remark-bekk/dist/bekk.css" type="text/css" rel="stylesheet">
+    <link href="../../node_modules/caniuse-component/styles.css" type="text/css" rel="stylesheet">
+    <style>
+    .red {
+      color: #fd5158;
+    }
+    .remark-slide-content {
+      position: relative;
+    }
+
+    .css-fail {
+      position: absolute;
+      width: 100px;
+      top: 50%;
+      right: 300px;
+      border: 1px solid white;
+      font-size: 2em;
+      padding: 0.5em;
+      transform: translateY(-50%);
+  }
+  code {
+    color: #fd5158;
+    font-family: monospace;
+  }
+  .footnote {
+        position: absolute;
+        bottom: 3em;
+        right: 3em;
+      }
+    </style>
+  
   </head>
   <body class="bekk-black">
     <textarea id="source">
@@ -22,7 +52,12 @@ Fagdagen 28.10.2016
 
 ???
 
-Notater
+Hei og velkommen til en dag spekket med spennende ting om CSS!
+Vi har et fantastisk program klart for dere med flinke folk fra både tech og interactive.
+
+Håper dere sitter klare med sublime text, og om du føler at du kanskje kommer litt til kort med avansert CSS, eller bare har lyst å være litt sosial er det helt lov hjelpe hverandre.
+
+Dette er ingen konkuranse.
 
 ---
 
@@ -31,355 +66,230 @@ class: agenda
 # Agenda
 
 * Introduksjon
-* Flexbox med Petter
-* Grids med Hanne og Helge
-* Calc og css-variabler <em>med Mira</em>
-* Filter og Blend-modes med Eivind
-* Css-shapes og Columns med Andrew
+* Flexbox med <em class="red">Petter</em>
+* Grids med <em class="red">Hanne og Helge</em>
+* Lunsj?
+* Calc og css-variabler med <em class="red">Mira</em>
+* Filter og Blend-modes med <em class="red">Eivind</em>
+* Css-shapes og Columns med <em class="red">Andrew</em>
 * Bonus?
 * Pils!
 
-<style>
-  .css-fail {
-      position: absolute;
-      width: 100px;
-      top: 50%;
-      right: 300px;
-      border: 1px solid white;
-      font-size: 2em;
-      padding: 0.5em;
-      transform: translateY(-50%);
-  }
-</style>
 <div class="css-fail">CSS is Awsome!</div>
 
+???
+
+Her er altså agendaen vår.
+Jeg holder som dere kanskje forstår en liten introduksjon, og det skal jeg holde på med en liten stund.
+
+Så skal Petter gi oss sort belte i Flexbox. Denne magiske verden som alle snakke om, men som man sjeldent ser i villmarken.
+
+Så skal Hanne og Helge revlusjonere hele fagfeltet med CSS-Grids.
+Fordi en box-modell var ikke nok for idag.
+
+Og da tror jeg vi tar oss litt lunsj faktisk, viktig med friske hoder for neste sesjon.
+
+Så, tilbake fra lunsj skal Mira vise hvordan vi kan kaste ut sass og less til fordel for standard-funksjonalitet i css med calc og css-variabler.
+
+Så blir Eivind litt kunstnerisk med filters og blend mode! Kreativt innslag fra Tech der altså!
+
+Så avslutter vi med enda flere layout-metoder her mer rettet mot typografi med css-shapes og columns fra Andrew. 
+
+Har vi ekstra tid kjører på med litt bonus materiale, ellers blir det vel pils på skuret?
+
+Noen spørsmål?
+
+Ok, da skal jeg først fortelle om noe nytt og grunnleggende i CSS.
+
+
+
+
 ---
 
-# Forside
+# @Supports
 
-Legg til klassen `front-page`. Overskrift, underoverskrift, beskrivelse, navn og dato er obligatorisk.
+Sjekk om nettleseren støtter en css-attributt/verdi kombinasjon
 
-Eksempel-slide:
-
-```html
-  class: front-page
-
-  # Coffeescript og SASS
-
-  ## En introduksjon
-
-  Forelesning ved NITH
-
-  Kim Joar Bekkelund
-
-  18/11/2011
+```css
+@supports (property: value) {
+  ...
+}
 ```
 
 ---
 
-# Agenda
+ # Backstory
+ Noen som husker disse?
 
-For agenda, legg til klassen `agenda` og lag liste:
+ ```css
+* html .selector  {}
+html > body .selector {} 
 
-  ```html
-  class: agenda
+.selector, {}
+.selector { _property: value }
 
-  * første punkt
-  * andre punkt
-  * tredje punkt
-  ```
+ ```
 
+???
+I riktig gode gamledager var en frontendutviklers fortritt evnen til å vite hvordan forskjellige nettlesere ville oppføre seg, og så hacke seg rundt det. De tolket nemmelig ikke stilene likt.
 
----
+Vi fikk derfor mye spennende hacks for å tilpasse css for visse nettlesere (Les IE). Her har vi noen klassikere!
 
-class: split
+Den første treffer kun i IE6, der det tydeligvis var et element over HTML, mens den andre treffer i alt annet enn IE6, fordi den ikke støttet child operatoren.
 
-# Split
-  ```html
-  class:split
+Så har vi en fin en som kun traff i IE7, for det måtte vi jo også ha.
 
-  ![bilde](images/shoes-half.jpg)
-
-  ```
-
-  ![](images/shoes-half.jpg)
+Vi kunne selvfølgelig også sette css props kun for IE6 som i den siste her.
 
 ---
 
-class: middle center
+# Hackytime
 
-# Midtjusterte overskrifter
-
----
-
-# Midtjusterte overskrifter
-
-Kode for å få til midtjustert overskrift:
-
-```html
-  class: middle center
-
-  # Midtjusterte overskrifter
+```css
+.column {
+  float: left;
+  margin-left: 10px;
+  _margin-left: 5px;
+}
 ```
 
----
+???
 
-class: center middle
+Noen som husker hva pokker jeg driver med her?
+Klassisk IE5/6 double margin bug.
 
-![](images/round.png)
-
----
-
-# Midtjusterte bilde
-
-Eksempel-slide:
-
-  ```html
-  .middle center
-
-  ![alternativ tekst](images/round.png)
-  ```
----
-
-
-background-image: url(images/shoes.jpg)
-class: middle center
-
-
-  # Stort bilde med text
-
-
-</div>
----
-
-background-image: url(images/shoes.jpg)
-class: middle center
-
-
-  # Stort bilde med rundt boks
-
-  .circle.red.top-right[
-    Fin tekst
-  ]
+Idag har vi ikke så store problemer, men vi har et problem med ny fancy css som alle nettlesere ikke nødvendigvis støtter, og vi kan ikke lenger belage oss på slike bugs hele veien, selv om det fortsatt finnes noen selv for nyere nettlesere.
 
 ---
 
-# Stort bilde
+# modernizr
 
-Bruk property `background-image` og legg til et stort bilde.
+```html
+  <body class="no-flexbox">
+```
 
-Eksempel-slide:
-
-  ```html
-  background-image: url(images/shoes.jpg)
-  class: middle center
-
-
-  # Stort bilde med rundt boks
-
-  .circle.red.top-right[
-    Fin tekst
-  ]
-  ```
-
----
-
-# Lister
-
-* Bare bruk `*`
-* ... så får du en liste
-
-Og:
-
-1. Nummererte lister er også mulig!
-2. Bare skriv `1.`, `2.`, og så videre
-
----
-
-# Hva med highlighting av kode?
-
-Et Ruby-eksempel:
-
-  ```ruby
-  names = people.map do |person|
-    person.name.capitalize
-  end
-  ```
-
-Og et JavaScript-eksempel:
-
-```javascript
-  var names = [];
-  for (var i = 0, l = people.length; i &lt; l; i++) {
-    var name = people[i].name.slice(0,1).toUpperCase();
-    names.push(name);
+```css
+  .no-flexbox div {
+    /* 1 million lines of css */
+  }
+  .flexbox div {
+    display: flex;
   }
 ```
 
-For kodeblokk, ha 2 mellomrom før kode:
+???
 
-```javascript
-  function test() {
-    return "test";
+I nyere tid har vi benyttet Modernizr som ga oss css-klasser på body, og tok oss litt nærmere en levbar hverdag, men det baserte seg på masse hacks.
+
+Vi trenger noe bedre, vi trenger CSS Feature Queries!
+
+---
+
+# CSS Feature Queries (@supports)
+
+Sjekk om nettleseren støtter en css-attributt/verdi kombinasjon
+
+```css
+@supports (display: flex) {
+  div { display: flex; }
+}
+```
+
+```css
+@supports (display: flex) and (mix-blend-mode: luminosity) {
+  div { display: flex; }
+  div img {
+    mix-blend-mode: luminosity;
   }
+}
 ```
+
+```css
+@supports (display: flex) or (display: -ms-flex) {
+  div { 
+    display: -ms-flex;
+    display: flex; 
+  }
+}
+```
+
+???
+
+Man kan sjekke om man støtter display: flex
+Man kan kombinere med and, eller or.
+Og det støtter naturligvis logiske paranteser.
+Man kan også sjekke prefixes og spesifikke attributter, som er kjekt når vi kommer til gradient, eller flere bakgrunnsbilder.
 
 ---
 
-# Lenker og knapper
+# Sjekke for "ikke" støtte
 
-  [vanlig lenke](#)
+Du kan også gjøre <code>not()</code> operasjoner som her
 
-  <a href="#" class="btn">Stor knapp</a>
-
-  <a href="#" class="btn loud">Større knapp</a>
-
-
-```html
-  [vanlig lenke](#)
-
-  <a href="#" class="btn">Stor knapp</a>
-
-  <a href="#" class="btn loud">Større knapp</a>
-```
-
-Markdown støtter ikke lenker med klasse, så vi må frem med litt html
-
----
-
-class: cols three
-
-# 3 kolonner
-
-.col[
-  ## Første kolonne.
-
-  For å få til kolonner må vi bruke litt HTML, sammen med to klasser.
-
-  ```html
-  class: cols three
-
-  .col[
-    kolonne 1
-  ]
-
-  .col[
-    kolonne 2
-  ]
-
-  .col[
-    kolonne 3
-  ]
+  ```css
+  div { display: flex; }
+  @supports not(display: flex) {
+    div {
+      /*... million linjer css */
+    }
+  }
   ```
-]
+???
 
-.col[
-  ## Andre kolonne
-]
+Man kan også sjekke om det ikke er støtte for property eller verdi ved hjelp av not operatoren, slik som dette.
+Da kan man skrive den millionen med css linjer som trengs om man ikke benytter flexbox.
 
-.col[
-  ## Tredje kolonne
+Men her har vi en liten logisk brist, støtter man ikke display: flex, kan det hende man ikke støtter @supports heller?
 
-  Vi støtter også to kolonner ved bruk av klassen `two` istedenfor `three`
+---
 
-  ```html
-  class: cols two
+# Nettleserstøtte
+  <ul id="caniuse--result-list"
+    data-propName="css-featurequeries"
+    data-browsers="ie safari firefox chrome edge">
+  </ul>
+
+  Dårlig nytt for IE der altså
+
+---
+
+# Progressive Enhancement
+
+
+  ```css
+  div {
+    /*... million linjer css */
+  }
+  @supports (display: flex) {
+    div { display: flex; }
+  }
   ```
-]
+???
 
----
+Ved å bruke prinsippene fra progressive-enhancement, og skrive fallback-koden først er vi sikre på at IE ikke blir sittende igjen i grøten.
 
-class: cols three
+Også trenger det naturligvis ikke se likt ut i alle nettlesere. Sitter man med gammel IE versjon, kan man kanskje leve med at det er litt stusselig, så får de god grunn til å oppgradere.
 
-# Kolonner støtter Markdown
-
-.col[
-  .circle.red.centered[Kolonne 1]
-
-  *em* sweet
-
-  [kimjoar.net](http://kimjoar.net)
-]
-
-.col[
-  .circle.green.centered[Kolonne 2]
-
-  * liste!
-  * nytt element
-  * *winning*
-]
-
-.col[
-  .circle.yellow.centered[Kolonne 3]
-
-  ## Overskrift
-
-  Overskrifter fungerer også i kolonner!
-]
-
----
-
-class: middle center
-
-.card[
-  .picture[
-    ![Ola Normann](https://res.cloudinary.com/bekkimg/w_500/d_default_image.png/374)
-  ]
-  .name[Ola Normann]
-  .title[Systemutvikler]
-  .department[Technology]
-  .phone[987 65 432]
-  .email[ola.normann@bekk.no]
-]
-
-.card[
-  .picture[
-    ![Some Guy](https://res.cloudinary.com/bekkimg/w_500/d_default_image.png/467)
-  ]
-  .name[Some Guy]
-  .title[Systemutvikler]
-  .department[Technology]
-  .phone[987 65 432]
-  .email[some.guy@bekk.no]
-]
-
----
-
-# Ansattekort
-
-```html
-  class: middle center
-
-  .card[
-    .picture[
-      ![Some Guy](https://intern.bekk.no/Employees/ViewEmployeeImage.ashx?thumbnail=true&thumbsize=500&employee=467)
-    ]
-    .name[Some Guy]
-    .title[Systemutvikler]
-    .department[Technology]
-    .phone[987 65 432]
-    .email[some.guy@bekk.no]
-  ]
-```
-
----
-
-# Noen lenker
-
-* [remark](https://github.com/gnab/remark)
-* [Markdown syntax](http://daringfireball.net/projects/markdown/syntax)
-
+Her har dere altså en grunnlegende egenskap jeg tenker vil være nyttig å se på utover dagen, så vi passer på at det vi gjør fungerer for alle. 
 ---
 
 class: center middle bekk-top
 
 # TAKK!
-Bjarne BEKK-konsulent
+Sebastian
+
+.footnote[Neste: <a href="../2.%20Flexbox%20(Petter)">Petter!</a>]
+
+???
+Nå tenker jeg at vi gir gass og lar Petter ta scenen, også tar vi en liten pause etter det!
+
+Noen spørsmål?
 
 
     </textarea>
 
   <script src="../../node_modules/remark-bekk/vendor/remark.min.js" type="text/javascript"></script>
+  
   <script type="text/javascript">
     var slideshow = remark.create({
       ratio: '16:9',
@@ -387,6 +297,7 @@ Bjarne BEKK-konsulent
       highlightLanguage: 'javascript'
     });
   </script>
+  <script src="../../node_modules/caniuse-component/scripts.js" async></script>
 
 
   </body>
