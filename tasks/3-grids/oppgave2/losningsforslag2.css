@@ -1,0 +1,32 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: 1fr 4fr 1fr;
+	grid-gap: 20px;
+  	grid-template-rows: 50px 100px 
+}
+
+header, footer {
+	grid-column-start: 1;
+	grid-column-end: 4;
+	/* grid-column: 1 / 5; */
+	/* grid-column: 1 / -1; */
+	/* grid-column: span 4; */
+}
+
+/* Styling */
+
+body {
+	color: #565656;
+	font-family: Helvetica, sans-serif;
+}
+
+.box {
+	padding: 10px;
+	color: #fff;
+	font-size: 2rem;
+	background-color: #565656;
+}
+
+.box:nth-child(odd) {
+	background-color: #4eada6;
+}

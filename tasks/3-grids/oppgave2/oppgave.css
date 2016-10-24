@@ -1,0 +1,25 @@
+.wrapper {
+	display: grid;
+}
+
+header, footer {
+
+}
+
+/* Styling */
+
+body {
+	color: #565656;
+	font-family: Helvetica, sans-serif;
+}
+
+.box {
+	padding: 10px;
+	color: #fff;
+	font-size: 2rem;
+	background-color: #565656;
+}
+
+.box:nth-child(odd) {
+	background-color: #4eada6;
+}
