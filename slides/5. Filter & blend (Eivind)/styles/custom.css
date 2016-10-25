@@ -1,3 +1,5 @@
+
+/* cssPhotos */
 #filterdude{
   width: 100%;
   height: auto;
@@ -23,4 +25,61 @@
 }
 .output {
   margin-top: 20px;
+  margin-left: 50px;
+}
+
+/* hueRotate */
+
+.colorwheel {
+  height: 150px;
+  position: relative;
+  margin: 0px 50px 0px 50px;
+}
+.indicator {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    border-left: 50px solid #0f0;
+    transition: 5s ease-in-out;
+    margin: 50px;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+.colorwheel:hover .indicator {
+  -webkit-filter: hue-rotate(360deg);
+  filter: hue-rotate(360deg);
+  -webkit-transform: rotate(-360deg);
+  -moz-transform: rotate(-360deg);
+  -ms-transform: rotate(-360deg);
+  -o-transform: rotate(-360deg);
+  transform: rotate(-360deg);
+}
+.colorwheel--huge {
+    width: 5000px;
+    height: 200px;
+}
+
+.colorwheel img {
+    height: 150px;
+    position: absolute;
+    border-left: 100px solid transparent;
+}
+
+/* sepiaPhotos */
+
+.imagePlain,
+.imageBlackAndWhite,
+.imageSepia {
+  width: 33%;
+  display: inline-block;
+}
+.imagePlain img,
+.imageBlackAndWhite img,
+.imageSepia img{
+  max-width: 100%;
+}
+.imageBlackAndWhite {
+  filter: grayscale(100%);
+}
+.imageSepia {
+  filter: sepia(100%);
 }
