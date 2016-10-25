@@ -1,0 +1,26 @@
+#filterdude{
+  width: 100%;
+  height: auto;
+}
+.imageTarget {
+  display: inline-block;
+  width: 50%;
+}
+.filterGroup{
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+.controls {
+  width: 49%;
+  display: inline-block;
+}
+.filterEdit {
+  line-height: 25px
+}
+.filterEdit-input {
+  float: right;
+}
+.output {
+  margin-top: 20px;
+}
