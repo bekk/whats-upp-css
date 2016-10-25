@@ -34,11 +34,11 @@ h3{ font-size: 24px; }
 h4{ font-size: 20px; }
 
 h1 + p{
+	color: #465a70;
 	font-size: 18px;
-	padding-top: 0;
 	font-style: italic;
   line-height: 30px;
-	color: #465a70;
+	padding-top: 0;
 }
 
 p{ 
@@ -48,16 +48,16 @@ p{
 }
 
 header {
-	height: 315px;
 	border-bottom: 15px solid #BF0A30;
+	height: 315px;
 	position: relative;
 }
 
 .flag{
 	height: 300px;
-	width: 50%;	
-	min-width: 300px;
 	float: left;
+	min-width: 300px;
+	width: 50%;	
 }
 .flag.left{ 
 	background-color: #002868;
@@ -65,60 +65,60 @@ header {
 	padding-right: 20px;
 }
 .flag.left .star{
-	width: 150px;
-	height: 150px;
 	background-color: #FFFFFF;
+	float: right;
+	height: 150px;
+	width: 150px;
 }
 
-.flag.left .star:not(:first-child){
-	margin-right: 50px
-}
+.flag.left .star:not(:first-child){	margin-right: 50px; }
 .flag.right{ background-color: #BF0A30; }
 .flag.right .stripe{
 	background-color: #FFFFFF;
-	width: 100%;
   height: 125px;
   margin-top: 100px;
   padding: 6px 0;
+	width: 100%;
 }
 
 .trump-one{ max-width: 100%; }
 
 .label-sticker{
-  width: 350px;
-  height: 350px;
-  text-align: center;
-  font-family: 'Lobster', Arial, Helvetica, sans-serif;
-  font-size: 42px;
   background-color: #000000;
   color: #FFFFFF;
-  padding: 59px 36px;
+  font-family: 'Lobster', Arial, Helvetica, sans-serif;
+  font-size: 42px;
+  height: 350px;
   line-height: 48px;
+  padding: 59px 36px;
+  text-align: center;
+  width: 350px;
 }
 
 .arrow{
 	height: 600px;
-	width: 33.3%;
-	min-width: 300px;
 	margin-bottom: 15px;
+	min-width: 300px;
+	width: 33.3%;
 }
 
 .arrow.up{ background-color: #002868; }
 .arrow.down{ background-color: #BF0A30; }
 
-.columns p:first-child{
-	padding-top: 0;
-}
-
-.columns p:last-child{
-	padding-bottom: 0;
-}
+.columns p:first-child{ padding-top: 0; }
+.columns p:last-child{ padding-bottom: 0; }
 
 footer{
 	background-color: #002868;
 	color: white;
 	margin-top: 40px;
 	padding: 20px 0 40px;
+}
+
+@media (max-width: 856px){
+
+	.flag.left .star:not(:first-child) { margin-right: 30px; }
+
 }
 
 @media (max-width: 616px){
@@ -130,7 +130,7 @@ footer{
 		margin: 0 auto;
     width: 300px;
 	}
-	.flag.right{ display: none; }
 
+	.flag.right{ display: none; }
 	.trump-one{ float: none; }
 }

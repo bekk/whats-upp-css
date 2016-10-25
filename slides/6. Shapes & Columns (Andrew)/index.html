@@ -23,20 +23,149 @@ Andrew Byles
 28.10.2016
 
 
+---
+
+class: agenda
+
+# XXXXXX XXXXX
+
+* xxxx
+* xxxxxx
+* xxx xxxx
+* xxxxxx
+* xxxxxx
+* xxxx
+
+
+---
+class: middle center
+
+# (-webkit-)clip-path
+
+Prevents a portion of an element from being displayed, by defining a clipping region.
 
 ---
 
-# Shape
+# Clip Path - Basic Shape
 
-/* -webkit-clip-path: url("#myClip"); */
+--
+
+.center[Centered text]
+
+--
+
+* A basic-shap function. Such a shape will make use of the specified geometry-box to size and position the basic shape. 
+* If no geometry box is specified, the border-box will be used as reference box.
+
+???
+TEST
+---
+class:split
+![bilde](images/clip-path-circle.jpg)
+
+# Clip Path - Circle
+
+```CSS
+  clip-path: circle(R at x y);
+```
+
+---
+class:split
+![bilde](images/clip-path-polygon.jpg)
+
+# Clip Path - Polygon
+
+```CSS
+  clip-path: polygon(x y , x y, ...);
+```
+
+---
+class:split
+![bilde](images/clip-path-inset.jpg)
+
+# Clip Path - Inset
+
+```CSS
+  /* Distance from each geometry box edge */
+    
+  clip-path: inset(t, r, b, l);
+```
+
+---
+class:split
+![bilde](images/clip-path-ellipse.jpg)
+
+# Clip Path - Ellipse
+
+```CSS
+  clip-path: ellipse(Rx Ry at x y);
+```
+
+---
+class:split
+![bilde](images/clip-path-svg.jpg)
+
+# Clip Path - Url
+
+The path to a clipping element.
+
+```XML
+<svg height="0" width="0">
+ <defs>
+  <clipPath id="my-clip-path">
+   <rect y="1" x="2" width="3" height="4"/>
+  </clipPath>
+ </defs>
+</svg>
+```
+
+```CSS
+  clip-path: url(my-clippath.svg); 
+```
+
+---
+
+# Geometry Box
+
+* If specified in combination with a basic-shape, it provides the reference box for the basic shape. 
+* If specified by itself, it uses the edges of the specified box including any corner shaping (e.g. defined by border-radius) as clipping path. 
+
+fill-box
+Uses the object bounding box as reference box.
+
+stroke-box
+Uses the stroke bounding box as reference box.
+
+view-box
+Uses the nearest SVG viewport as reference box. If a viewBox attribute is specified for the element creating the SVG viewport, the reference box is positioned at the origin of the coordinate system established by the viewBox attribute and the dimension of the reference box is set to the width and height values of the viewBox attribute.
+
+margin-box
+Uses the margin box as the reference box.
+
+border-box
+Uses the border box as the reference box.
+
+padding-box
+Uses the padding box as the reference box.
+
+content-box
+Uses the content box as the reference box.
+
+---
+
+```CSS
+  /* -webkit-clip-path: url("#myClip"); */
   
-/* iOS support */
- -webkit-mask: url(clip.svg);/*Chrome,Safari*/
--webkit-clip-path: url(clip.svg);
+  /* iOS support */
+  -webkit-mask: url(clip.svg);/*Chrome,Safari*/
+  -webkit-clip-path: url(clip.svg);
 
-/* Firefox*/
-clip-path: url(clip.svg#svgClip);
+  /* Firefox*/
+  clip-path: url(clip.svg#svgClip);
 
+```
+
+---
     </textarea>
 
   <script src="../../node_modules/remark-bekk/vendor/remark.min.js" type="text/javascript"></script>
