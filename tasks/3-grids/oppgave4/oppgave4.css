@@ -1,0 +1,91 @@
+/* 
+
+4A: Alle kolonner skal være minimum 120px bred, og gridet 
+	skal lage plass til så mange kolonner som mulig.
+
+4B: Alle rader skal være minimum 120px høye, men de skal 
+	utvide seg hvis innholdet krever det.
+
+4C: Hvite celler skal fylle hele sidens bredde uansett skjermbredde
+
+4D: Svart celle skal legges i starten
+
+4E: Svart celle skal fylle tre kolonner og to rader
+
+4F: Røde celler skal fylle tre rader
+
+4G: Grønne celler skal fylle tre kolonner
+
+4H: Blå celler skal fylle to rader og to kolonner
+
+4I: Sett opp gridet slik at tomme plasser automatisk fylles
+
+*/
+
+.wrapper {
+	display: grid;
+	grid-gap: 10px;
+}
+
+.box {
+
+}
+
+.white {
+
+}
+
+.black {
+
+}
+
+.red {
+
+}
+
+.green {
+}
+
+.blue {
+
+}
+
+/* Styling */
+
+body {
+	color: #101010;
+	background: #ccc;
+	font-family: Helvetica, sans-serif;
+}
+
+.box {
+	padding: 1em;
+	background-color: rgba(255, 255, 255, .5);
+	line-height: 1.4;
+}
+
+.white {
+	background-color: #fff;
+}
+
+.blue {
+	background-color: rgba(0, 102, 205, .5);
+}
+
+.red {
+	background-color: rgba(204, 0, 0, .5);
+}
+
+.green {
+	background-color: rgba(0, 153, 51, .5);
+}
+
+.black {
+	background-color: rgba(0, 0, 0, .8);
+	color: white;
+}
+
+.box h2 {
+	font-size: 1.65em;
+	margin: .25em 0;
+}
