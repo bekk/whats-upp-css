@@ -1,0 +1,50 @@
+/*  Oppgave: Bruk det du har lært til å lage 
+	Vegveven-layout med CSS-grid */
+
+.wrapper {
+	display: grid;
+	grid-gap: 1em;
+}
+
+.box:nth-child(1) {
+
+}
+
+.box:nth-child(2) {
+
+}
+
+.box:nth-child(3) {
+
+}
+
+.box:nth-child(4) {
+
+}
+
+.box:nth-child(5) {
+
+}
+
+.box:nth-child(n + 6) {
+
+}
+
+/* Styling */
+
+body {
+	color: #101010;
+	background: #ccc;
+	font-family: Helvetica, sans-serif;
+}
+
+.box {
+	padding: 1em;
+	background-color: #fff;
+	line-height: 1.4;
+}
+
+.box h2 {
+	font-size: 1.65em;
+	margin: .25em 0;
+}
