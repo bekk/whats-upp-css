@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BEKK-theme for remark</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../node_modules/remark-bekk/dist/bekk.css" type="text/css" rel="stylesheet">
+    <link href="../../node_modules/caniuse-component/styles.css" type="text/css" rel="stylesheet">
+    <style>
+    .red {
+      color: #fd5158;
+    }
+    .remark-slide-content {
+      position: relative;
+    }
+
+    .flexbox-horizontal {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 30px;
+    }
+
+    .flexbox-vertical {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .flexbox-box {
+      width: 100px;
+      height: 100px;
+      margin: 5px;
+      background-color: white;
+      color: black;
+    }
+
+    .grid-example {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 10px;
+      margin: 5px;
+      margin-left: 100px;
+    }
+
+    .grid-box {
+      min-width: 100px;
+      min-height: 100px;
+      background: white;
+      color: black;
+    }
+
+    .grid-box:nth-child(1) {
+      grid-row: 1 / 3;
+    }
+
+    .grid-box:nth-child(2) {
+      grid-column: 2 / 4;
+    }
+
+    .grid-box:nth-child(5) {
+      grid-column: 1 / 4;
+    }
+
+    .faded {
+      opacity: 0.5;
+    }
+
+    .half-width {
+      display: inline-block;
+      max-width: 45%;
+      vertical-align: top;
+    }
+
+    .vegveven-grid {
+      width: 600px;
+    }
+
+    code {
+      color: #fd5158;
+      font-family: monospace;
+    }
+    .footnote {
+        position: absolute;
+        bottom: 3em;
+        right: 3em;
+      }
+    </style>
+  
+  </head>
+  <body class="bekk-black">
+    <textarea id="source">
+
+class: front-page
+
+# CSS grids
+
+## Making grids great again
+
+
+Hanne og Helge
+
+Fagdagen 04.11.2016
+
+???
+
+OK alle sammen! Nå skal vi lære å lage grids i CSS! Og hva er det rette verktøyet for å lage grids?
+Rekk opp hånden de som husker når vi fikset dette med tables. 
+
+I nyere tid, ca hele den tiden jeg har jobbet med frontend, har vi jobbet ekstensivt med floats. Men så, for et par år siden, ble det plutselig OK å bruke flexbox. Og det har vært en revolusjon, blant annet når det kommer til å lage grids. 
+
+---
+
+# CSS grids vs flexbox
+
+
+<div class="half-width">
+  <div class="flexbox-horizontal">
+    <div class="flexbox-box"></div>
+    <div class="flexbox-box"></div>
+    <div class="flexbox-box"></div>
+  </div>
+
+  <div class="flexbox-vertical">
+    <div class="flexbox-box"></div>
+    <div class="flexbox-box"></div>
+    <div class="flexbox-box"></div>
+  </div>
+</div>
+
+???
+CSS grids, som vi skal lære i dag, kommer ikke til å erstatte flexbox. Flexbox er et fantastisk verktøy for å sette opp grids i èn dimensjon, enten på X-aksen eller Y-aksen.
+
+---
+
+ # CSS grids vs flexbox
+
+<div class="faded half-width">
+  <div class="flexbox-horizontal">
+    <div class="flexbox-box"></div>
+    <div class="flexbox-box"></div>
+    <div class="flexbox-box"></div>
+  </div>
+
+  <div class="flexbox-vertical">
+    <div class="flexbox-box"></div>
+    <div class="flexbox-box"></div>
+    <div class="flexbox-box"></div>
+  </div>
+</div>
+
+
+ <div class="half-width">
+  <div class="grid-example">
+    <div class="grid-box"></div>
+    <div class="grid-box"></div>
+    <div class="grid-box"></div>
+    <div class="grid-box"></div>
+    <div class="grid-box"></div>
+  </div>
+</div>
+
+???
+CSS grids sin styrke kommer frem når vi skal ha grids der noder i gridet skal strekke seg over flere akser, enten i høyden eller bredden (eller begge). 
+
+---
+
+# Eksempel
+
+Vegveven - Statens vegvesen sitt intranett
+
+<img src="./images/vegveven-grid.png" class="vegveven-grid" />
+
+
+???
+
+For å gi et eksempel. Dette er forsiden til Vegveven, Statens vegvesens intranett. Nå har det seg sånn at det er selveste Helge som har laget denne forsiden. Helge, var det mye jobb som kunne ha blitt unngått hvis CSS grids var støttet?
+
+---
+
+# Nettleserstøtte
+
+<ul id="caniuse--result-list"
+    data-propName="css-grid"
+    data-browsers="ie safari firefox chrome edge">
+  </ul>
+
+???
+
+For det må sies, CSS grids har heller dårlig støtte inntil videre. Men når denne teknologien støttes skal vi være klare til å bruke den. 
+
+---
+
+# CSS Feature Queries (@supports)
+
+Sjekk om nettleseren støtter en css-attributt/verdi kombinasjon
+
+```css
+@supports (display: flex) {
+  div { display: flex; }
+}
+```
+
+```css
+@supports (display: flex) and (mix-blend-mode: luminosity) {
+  div { display: flex; }
+  div img {
+    mix-blend-mode: luminosity;
+  }
+}
+```
+
+```css
+@supports (display: flex) or (display: -ms-flex) {
+  div { 
+    display: -ms-flex;
+    display: flex; 
+  }
+}
+```
+
+???
+
+Man kan sjekke om man støtter display: flex
+Man kan kombinere med and, eller or.
+Og det støtter naturligvis logiske paranteser.
+Man kan også sjekke prefixes og spesifikke attributter, som er kjekt når vi kommer til gradient, eller flere bakgrunnsbilder.
+
+---
+
+# Sjekke for "ikke" støtte
+
+Du kan også gjøre <code>not()</code> operasjoner som her
+
+  ```css
+  div { display: flex; }
+  @supports not(display: flex) {
+    div {
+      /*... million linjer css */
+    }
+  }
+  ```
+???
+
+Man kan også sjekke om det ikke er støtte for property eller verdi ved hjelp av not operatoren, slik som dette.
+Da kan man skrive den millionen med css linjer som trengs om man ikke benytter flexbox.
+
+Men her har vi en liten logisk brist, støtter man ikke display: flex, kan det hende man ikke støtter @supports heller?
+
+---
+
+# Nettleserstøtte
+  <ul id="caniuse--result-list"
+    data-propName="css-featurequeries"
+    data-browsers="ie safari firefox chrome edge">
+  </ul>
+
+  Dårlig nytt for IE der altså
+
+---
+
+# Progressive Enhancement
+
+
+  ```css
+  div {
+    /*... million linjer css */
+  }
+  @supports (display: flex) {
+    div { display: flex; }
+  }
+  ```
+???
+
+Ved å bruke prinsippene fra progressive-enhancement, og skrive fallback-koden først er vi sikre på at IE ikke blir sittende igjen i grøten.
+
+Også trenger det naturligvis ikke se likt ut i alle nettlesere. Sitter man med gammel IE versjon, kan man kanskje leve med at det er litt stusselig, så får de god grunn til å oppgradere.
+
+Her har dere altså en grunnlegende egenskap jeg tenker vil være nyttig å se på utover dagen, så vi passer på at det vi gjør fungerer for alle. 
+---
+
+class: center middle bekk-top
+
+# TAKK!
+Sebastian
+
+.footnote[Neste: <a href="../2.%20Flexbox%20(Petter)">Petter!</a>]
+
+???
+Nå tenker jeg at vi gir gass og lar Petter ta scenen, også tar vi en liten pause etter det!
+
+Noen spørsmål?
+
+
+    </textarea>
+
+  <script src="../../node_modules/remark-bekk/vendor/remark.min.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var slideshow = remark.create({
+      ratio: '16:9',
+      highlightStyle: 'monokai',
+      highlightLanguage: 'javascript'
+    });
+  </script>
+  <script src="../../node_modules/caniuse-component/scripts.js" async></script>
+
+
+  </body>
+</html>
