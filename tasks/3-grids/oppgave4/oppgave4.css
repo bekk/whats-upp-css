@@ -14,11 +14,13 @@
 
 4F: Røde celler skal fylle tre rader
 
-4G: Grønne celler skal fylle tre kolonner
+FG: Den orange skal starte på rad 2 og avsluttes på rad 6
 
-4H: Blå celler skal fylle to rader og to kolonner
+4H: Grønne celler skal fylle tre kolonner
 
-4I: Sett opp gridet slik at tomme plasser automatisk fylles
+4I: Blå celler skal fylle to rader og to kolonner
+
+4J: Sett opp gridet slik at tomme plasser automatisk fylles
 
 */
 
@@ -43,10 +45,19 @@
 
 }
 
+.orange {
+
+}
+
 .green {
+
 }
 
 .blue {
+
+}
+
+.orange {
 
 }
 
@@ -83,6 +94,10 @@ body {
 .black {
 	background-color: rgba(0, 0, 0, .8);
 	color: white;
+}
+
+.orange {
+	background-color: rgba(255, 153, 0, .5);
 }
 
 .box h2 {
