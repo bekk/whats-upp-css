@@ -189,100 +189,137 @@ For det må sies, CSS grids har heller dårlig støtte inntil videre. Men når d
 
 ---
 
-# CSS Feature Queries (@supports)
+# CSS grids 101
 
-Sjekk om nettleseren støtter en css-attributt/verdi kombinasjon
 
-```css
-@supports (display: flex) {
-  div { display: flex; }
-}
+```html
+<div class="wrapper">
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+</div>
 ```
 
 ```css
-@supports (display: flex) and (mix-blend-mode: luminosity) {
-  div { display: flex; }
-  div img {
-    mix-blend-mode: luminosity;
-  }
-}
-```
-
-```css
-@supports (display: flex) or (display: -ms-flex) {
-  div { 
-    display: -ms-flex;
-    display: flex; 
-  }
+.wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 100px 100px 300px;
+  grid-template-rows: auto;
 }
 ```
 
 ???
 
-Man kan sjekke om man støtter display: flex
-Man kan kombinere med and, eller or.
-Og det støtter naturligvis logiske paranteser.
-Man kan også sjekke prefixes og spesifikke attributter, som er kjekt når vi kommer til gradient, eller flere bakgrunnsbilder.
+Hvordan lager man et grunnleggende grid? Først trenger vi en wrapper rundt elementene som skal bli gridet. `display: grid;`. Det er også nyttig med `grid-gap`, plassen mellom elementene. grid-template-columns brukes for å sette antall kolonner. Samme med grid-template-rows, som angir størrelsen på radene.
 
 ---
 
-# Sjekke for "ikke" støtte
+# Fractional units
 
-Du kan også gjøre <code>not()</code> operasjoner som her
+Fractional units (<code>fr</code>) angir hvor mye av tilgjengelig plass elementet kan bruke.
 
-  ```css
-  div { display: flex; }
-  @supports not(display: flex) {
-    div {
-      /*... million linjer css */
-    }
-  }
-  ```
+```html
+<div class="wrapper">
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 3fr;
+  grid-template-rows: auto;
+}
+```
+
 ???
 
-Man kan også sjekke om det ikke er støtte for property eller verdi ved hjelp av not operatoren, slik som dette.
-Da kan man skrive den millionen med css linjer som trengs om man ikke benytter flexbox.
-
-Men her har vi en liten logisk brist, støtter man ikke display: flex, kan det hende man ikke støtter @supports heller?
+Her ser man det samme gridet som forrige slide, forskjellen ligger i kolonnebreddene vi har satt. I stedet for at de to første kolonnene tar 100px, tar de nå 1fr. Den siste kolonnen tar 3fr, tre ganger så mye som de to første kolonnene. 
 
 ---
 
-# Nettleserstøtte
-  <ul id="caniuse--result-list"
-    data-propName="css-featurequeries"
-    data-browsers="ie safari firefox chrome edge">
-  </ul>
+# minmax
 
-  Dårlig nytt for IE der altså
+<code>minmax()</code> angir minimumsverdi og maksimumsverdi.
 
----
+```html
+<div class="wrapper">
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+</div>
+```
 
-# Progressive Enhancement
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: minmax(100px, 1fr) 1fr 3fr;
+  grid-template-rows: auto;
+}
+```
 
-
-  ```css
-  div {
-    /*... million linjer css */
-  }
-  @supports (display: flex) {
-    div { display: flex; }
-  }
-  ```
 ???
 
-Ved å bruke prinsippene fra progressive-enhancement, og skrive fallback-koden først er vi sikre på at IE ikke blir sittende igjen i grøten.
+Det andre konseptet er en funksjon som heter minmax(). Den tar to verdier, hvilken minimumsverdi man ønsker og hvilken maksimumsverdi man ønsker. Denne kan brukes for å sette kolonnebredde eller radhøyde.
 
-Også trenger det naturligvis ikke se likt ut i alle nettlesere. Sitter man med gammel IE versjon, kan man kanskje leve med at det er litt stusselig, så får de god grunn til å oppgradere.
+---
 
-Her har dere altså en grunnlegende egenskap jeg tenker vil være nyttig å se på utover dagen, så vi passer på at det vi gjør fungerer for alle. 
+# Praktisk informasjon
+  - Intro per oppgave
+  - 10 minutter oppgaveløsing
+  - Løsningsforslag vedlagt
+
+???
+Nå er det på tide å komme i gang med den praktiske delen av workshoppen. Vi kommer til å kjøre workshoppen med en liten intro per oppgave, før dere får 10 minutter på å løse oppgaven. I oppgavene skal dere ikke trenge endre på HTML, bare CSS-fila.
+
+---
+
+# Oppgave 1
+
+
+  Her kommer oppgave 1
+???
+
+Oppgave 1 speaker notes
+---
+
+# Oppgave 2
+
+
+  Her kommer oppgave 2
+???
+
+Oppgave 2 speaker notes
+---
+
+# Oppgave 3
+
+
+  Her kommer oppgave 3
+???
+
+Oppgave 3 speaker notes
+---
+
+# Oppgave 4
+
+
+  Her kommer oppgave 4
+???
+
+Oppgave 4 speaker notes
 ---
 
 class: center middle bekk-top
 
 # TAKK!
-Sebastian
+Hanne og Helge
 
-.footnote[Neste: <a href="../2.%20Flexbox%20(Petter)">Petter!</a>]
 
 ???
 Nå tenker jeg at vi gir gass og lar Petter ta scenen, også tar vi en liten pause etter det!
