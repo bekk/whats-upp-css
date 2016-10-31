@@ -36,7 +36,7 @@
     .grid-example {
       display: grid;
       grid-template-columns: repeat(3, 100px);
-      grid-gap: 10px;
+      grid-gap: 20px;
       margin: 5px;
       margin-left: 100px;
     }
@@ -82,6 +82,15 @@
         position: absolute;
         bottom: 3em;
         right: 3em;
+      }
+    </style>
+
+    <style>
+      .box {
+        font-size: 3em;
+        padding: 20px;
+        color: #111111;
+        background-color: white;
       }
     </style>
   
@@ -189,25 +198,45 @@ For det må sies, CSS grids har heller dårlig støtte inntil videre. Men når d
 
 ---
 
+class: cols two
 # CSS grids 101
 
+Et enkelt grid.
 
+.col[
 ```html
 <div class="wrapper">
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
 </div>
 ```
 
 ```css
 .wrapper {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 20px;
   grid-template-columns: 100px 100px 300px;
   grid-template-rows: auto;
 }
 ```
+]
+
+.col[
+  <style>
+    .wrapper.ex-1 {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: 100px 100px 300px;
+      grid-template-rows: auto;
+    }
+  </style>
+  <div class="wrapper ex-1">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+]
 
 ???
 
@@ -215,26 +244,44 @@ Hvordan lager man et grunnleggende grid? Først trenger vi en wrapper rundt elem
 
 ---
 
+class: cols two
 # Fractional units
 
 Fractional units (<code>fr</code>) angir hvor mye av tilgjengelig plass elementet kan bruke.
 
-```html
+.col[```html
 <div class="wrapper">
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
 </div>
 ```
 
 ```css
 .wrapper {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 20px;
   grid-template-columns: 1fr 1fr 3fr;
   grid-template-rows: auto;
 }
 ```
+]
+
+.col[
+  <style>
+  .wrapper.ex-2 {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: 1fr 1fr 3fr;
+      grid-template-rows: auto;
+    }
+  </style>
+  <div class="wrapper ex-2">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+]
 
 ???
 
@@ -257,7 +304,7 @@ Her ser man det samme gridet som forrige slide, forskjellen ligger i kolonnebred
 ```css
 .wrapper {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 20px;
   grid-template-columns: minmax(100px, 1fr) 1fr 3fr;
   grid-template-rows: auto;
 }
