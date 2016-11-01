@@ -78,6 +78,31 @@
       max-width: 100%;
     }
 
+    .ex-col-2-numbers {
+      display: grid;
+      grid-template-columns: repeat(2, 10px 1fr) 10px;
+    }
+
+    .ex-col-3-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 10px 1fr) 10px;
+    }
+
+    .ex-col-2-numbers .number,
+    .ex-col-3-numbers .number {
+      grid-column: span 2;
+      font-size: 1.5rem;
+    }
+
+    .ex-col-2-numbers .number:last-child,
+    .ex-col-3-numbers .number:last-child {
+      grid-column: span 1;
+    }
+
+    .ex-has-col-numbers {
+      margin: 0 10px;
+    }
+
     code {
       color: #fd5158;
       font-family: monospace;
@@ -371,9 +396,46 @@ Det andre konseptet er en funksjon som heter minmax(). Den tar to verdier, hvilk
 ---
 
 class: cols two
+# Grid lines
+
+.col[
+- Rutenettet til gridet (de grå linjene)
+- Det følger oppsettet til kolonnene og radene
+- Starter på 1
+- Gridets slutt kan refereres med -1
+]
+
+.col[
+<div class="ex-col-2-numbers">
+  <div class="number">1</div>
+  <div class="number">2</div>
+  <div class="number">3</div>
+</div>
+<div class="wrapper ex-lines">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+</div>
+
+<style>
+.wrapper.ex-lines {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 20px;
+  background: grey;
+}
+</style>
+]
+
+---
+
+class: cols two
 # Colspan
 
 .col[
+
   ```html
 <div class="wrapper">
   <div class="box">1</div>
@@ -392,7 +454,12 @@ class: cols two
 ]
 
 .col[
-<div class="wrapper ex-start-1">
+<div class="ex-col-2-numbers">
+  <div class="number">1</div>
+  <div class="number">2</div>
+  <div class="number">3</div>
+</div>
+<div class="wrapper ex-start-1 ex-has-col-numbers">
   <div class="box">1</div>
   <div class="box">2</div>
   <div class="box">3</div>
@@ -436,7 +503,13 @@ class: cols two
 ]
 
 .col[
-<div class="wrapper ex-start-2">
+<div class="ex-col-2-numbers">
+  <div class="number">1</div>
+  <div class="number">2</div>
+  <div class="number">3</div>
+</div>
+
+<div class="wrapper ex-start-2 ex-has-col-numbers">
   <div class="box">1</div>
   <div class="box">2</div>
   <div class="box">3</div>
@@ -485,7 +558,13 @@ class: cols two
 ]
 
 .col[
-<div class="wrapper ex-start-3">
+<div class="ex-col-2-numbers">
+  <div class="number">1</div>
+  <div class="number">2</div>
+  <div class="number">3</div>
+</div>
+
+<div class="wrapper ex-start-3 ex-has-col-numbers">
   <div class="box">1</div>
   <div class="box">2</div>
   <div class="box">3</div>
@@ -496,6 +575,7 @@ class: cols two
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(2, 1fr);
+
 }
 .wrapper.ex-start-3 .box:first-child {
   grid-column-start: 1;
@@ -535,7 +615,13 @@ class: cols two
 ]
 
 .col[
-<div class="wrapper ex-start-4">
+<div class="ex-col-2-numbers">
+  <div class="number">1</div>
+  <div class="number">2</div>
+  <div class="number">3</div>
+</div>
+
+<div class="wrapper ex-start-4 ex-has-col-numbers">
   <div class="box">1</div>
   <div class="box">2</div>
   <div class="box">3</div>
@@ -578,7 +664,14 @@ class: cols two
 ```
 ]
 .col[
-<div class="wrapper ex-span-0">
+<div class="ex-col-3-numbers">
+  <div class="number">1</div>
+  <div class="number">2</div>
+  <div class="number">3</div>
+  <div class="number">4</div>
+</div>
+
+<div class="wrapper ex-span-0 ex-has-col-numbers">
   <div class="box">1</div>
   <div class="box">2</div>
   <div class="box">3</div>
@@ -624,7 +717,14 @@ class: cols two
 ```
 ]
 .col[
-<div class="wrapper ex-span">
+<div class="ex-col-3-numbers">
+  <div class="number">1</div>
+  <div class="number">2</div>
+  <div class="number">3</div>
+  <div class="number">4</div>
+</div>
+
+<div class="wrapper ex-span ex-has-col-numbers">
   <div class="box">1</div>
   <div class="box">2</div>
   <div class="box">3</div>
@@ -673,7 +773,14 @@ class: cols two
 ```
 ]
 .col[
-<div class="wrapper ex-span-2">
+<div class="ex-col-3-numbers">
+  <div class="number">1</div>
+  <div class="number">2</div>
+  <div class="number">3</div>
+  <div class="number">4</div>
+</div>
+
+<div class="wrapper ex-span-2 ex-has-col-numbers">
   <div class="box">1</div>
   <div class="box">2</div>
   <div class="box">3</div>
