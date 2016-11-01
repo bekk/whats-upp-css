@@ -71,7 +71,11 @@
     }
 
     .vegveven-grid {
-      width: 600px;
+      max-width: 600px;
+    }
+
+    img.oppgave {
+      max-width: 100%;
     }
 
     code {
@@ -176,7 +180,7 @@ CSS grids sin styrke kommer frem når vi skal ha grids der noder i gridet skal s
 
 Vegveven - Statens vegvesen sitt intranett
 
-<img src="./images/vegveven-grid.png" class="vegveven-grid" />
+<img src="./images/vegveven-grid.png" class="oppgave-1" />
 
 
 ???
@@ -262,7 +266,6 @@ Fractional units (<code>fr</code>) angir hvor mye av tilgjengelig plass elemente
   display: grid;
   grid-gap: 20px;
   grid-template-columns: 1fr 1fr 3fr;
-  grid-template-rows: auto;
 }
 ```
 ]
@@ -273,7 +276,6 @@ Fractional units (<code>fr</code>) angir hvor mye av tilgjengelig plass elemente
       display: grid;
       grid-gap: 20px;
       grid-template-columns: 1fr 1fr 3fr;
-      grid-template-rows: auto;
     }
   </style>
   <div class="wrapper ex-2">
@@ -289,15 +291,53 @@ Her ser man det samme gridet som forrige slide, forskjellen ligger i kolonnebred
 
 ---
 
+class: cols two
+# Repeat
+
+.col[```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr) 3fr;
+}
+```
+]
+
+.col[
+  <style>
+  .wrapper.ex-repeat {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: repeat(2, 1fr) 3fr;
+    }
+  </style>
+  <div class="wrapper ex-repeat">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+]
+
+---
+
+
 # minmax
 
 <code>minmax()</code> angir minimumsverdi og maksimumsverdi.
 
 ```html
 <div class="wrapper">
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
 </div>
 ```
 
@@ -316,9 +356,14 @@ Det andre konseptet er en funksjon som heter minmax(). Den tar to verdier, hvilk
 
 ---
 
-# Oppgave
+# Oppgave 1: Et enkelt grid
 
-  <img src="../../tasks/3-grids/oppgave1/oppgave1.png" class="vegveven-grid" />
+  <img src="../../tasks/3-grids/oppgave1/oppgave1.png" class="oppgave" />
+
+---
+
+# Oppgave 1: Et enkelt grid
+
   - Lag CSS denne skjermdumpen
   - HTML- og CSS-filer til å jobbe i finner du i <code>tasks/3-grids/oppgave1</code>
   - Endringer skal bare gjøres i HTML-filen
@@ -331,9 +376,9 @@ class: cols two
 .col[
   ```html
 <div class="wrapper">
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
 </div>
 ```
 
@@ -341,11 +386,349 @@ class: cols two
 .wrapper {
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: minmax(100px, 1fr) 1fr 3fr;
-  grid-template-rows: auto;
+  grid-template-columns: repeat(2, 1fr);
 }
 ```
 ]
+
+.col[
+<div class="wrapper ex-start-1">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+
+<style>
+.wrapper.ex-start-1 {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+</style>
+]
+
+---
+
+class: cols two
+# Colspan
+
+.col[
+  ```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.box:first-child {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+```
+]
+
+.col[
+<div class="wrapper ex-start-2">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+
+<style>
+.wrapper.ex-start-2 {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.wrapper.ex-start-2 .box:first-child {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+</style>
+]
+
+---
+
+class: cols two
+# Colspan
+
+.col[
+  ```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.box:first-child {
+  grid-column-start: 1;
+  /* grid-column-end: 3; */
+  grid-column-end: -1;
+}
+```
+]
+
+.col[
+<div class="wrapper ex-start-3">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+
+<style>
+.wrapper.ex-start-3 {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.wrapper.ex-start-3 .box:first-child {
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+</style>
+]
+
+---
+
+class: cols two
+# Colspan
+
+.col[
+  ```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.box:first-child {
+  /* grid-column-start: 1; */
+  /* grid-column-end: 3; */
+  /* grid-column-end: -1; */
+  grid-column: 1 / -1;
+}
+```
+]
+
+.col[
+<div class="wrapper ex-start-4">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+
+<style>
+.wrapper.ex-start-4 {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.wrapper.ex-start-4 .box:first-child {
+  grid-column: 1 / -1;
+}
+</style>
+]
+
+---
+
+class: cols two
+# Span
+
+.col[
+```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+```
+]
+.col[
+<div class="wrapper ex-span-0">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+</div>
+
+<style>
+.wrapper.ex-span-0 {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+</style>
+]
+
+---
+
+class: cols two
+# Span
+
+.col[
+  ```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.box:first-child {
+  grid-column: span 2;
+}
+```
+]
+.col[
+<div class="wrapper ex-span">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+</div>
+
+<style>
+.wrapper.ex-span {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.wrapper.ex-span .box:first-child {
+  grid-column: span 2;
+}
+</style>
+]
+
+---
+
+class: cols two
+# Span
+
+.col[
+  ```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.box:first-child {
+  grid-row: span 2;
+}
+```
+]
+.col[
+<div class="wrapper ex-span-2">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+</div>
+
+<style>
+.wrapper.ex-span-2 {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.wrapper.ex-span-2 .box:first-child {
+  grid-row: span 2;
+}
+</style>
+]
+
+---
+
+# Oppgave 2: Holy Grail
+
+  <img src="../../tasks/3-grids/oppgave2/oppgave2.png" class="oppgave" />
+
+---
+
+# Oppgave 2: Holy Grail
+
+  - 2A) Lag "holy grail-layout" (google it!) (trenger ikke å fylle hele skjermhøyden)
+  - 2B) Bruk minmax slik at asides alltid er minimum 100px
+
+## Husk: 
+
+  - HTML- og CSS-filer til å jobbe i finner du i <code>tasks/3-grids/oppgave2</code>
+  - Endringer skal bare gjøres i HTML-filen
+
+---
+
+# Oppgave 3: Vegveven
+
+<img src="../../tasks/3-grids/oppgave3/oppgave3.png" class="vegveven-grid" />
+
+---
+
+# Oppgave 3: Vegveven
+
+- Ingen innhold
+- Kolonner og rader ihht. skissen
+- HTML- og CSS-filer til å jobbe i finner du i <code>tasks/3-grids/oppgave3</code>
+
+## Ferdig? 
+
+- Gjør det responsivt!
+- Klarer du det uten media queries?
 
 ---
 
