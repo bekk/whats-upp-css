@@ -316,50 +316,37 @@ Det andre konseptet er en funksjon som heter minmax(). Den tar to verdier, hvilk
 
 ---
 
-# Praktisk informasjon
-  - Intro per oppgave
-  - 10 minutter oppgaveløsing
-  - Løsningsforslag vedlagt
+# Oppgave
 
-???
-Nå er det på tide å komme i gang med den praktiske delen av workshoppen. Vi kommer til å kjøre workshoppen med en liten intro per oppgave, før dere får 10 minutter på å løse oppgaven. I oppgavene skal dere ikke trenge endre på HTML, bare CSS-fila.
+  <img src="../../tasks/3-grids/oppgave1/oppgave1.png" class="vegveven-grid" />
+  - Lag CSS denne skjermdumpen
+  - HTML- og CSS-filer til å jobbe i finner du i <code>tasks/3-grids/oppgave1</code>
+  - Endringer skal bare gjøres i HTML-filen
 
 ---
 
-# Oppgave 1
+class: cols two
+# Colspan
 
+.col[
+  ```html
+<div class="wrapper">
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+</div>
+```
 
-  Her kommer oppgave 1
-???
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: minmax(100px, 1fr) 1fr 3fr;
+  grid-template-rows: auto;
+}
+```
+]
 
-Oppgave 1 speaker notes
----
-
-# Oppgave 2
-
-
-  Her kommer oppgave 2
-???
-
-Oppgave 2 speaker notes
----
-
-# Oppgave 3
-
-
-  Her kommer oppgave 3
-???
-
-Oppgave 3 speaker notes
----
-
-# Oppgave 4
-
-
-  Her kommer oppgave 4
-???
-
-Oppgave 4 speaker notes
 ---
 
 class: center middle bekk-top
