@@ -393,7 +393,7 @@ Det andre konseptet er en funksjon som heter minmax(). Den tar to verdier, hvilk
 ---
 
 class: cols two
-# Grid lines
+# Grid lines, Grid tracks, Grid cell
 
 .col[
 - Rutenettet til gridet (de grå linjene)
@@ -426,10 +426,24 @@ class: cols two
 </style>
 ]
 
+???
+
+Grid lines
+- Kan være horisontale eller vertikale
+- Kan refereres til med nummer eller tall
+- 1, 2, 3
+
+Grid track 
+- Området mellom to grid lines. 
+- Vertikalt kan du se på det som en kolonne, men en grid track kan også gå horisontalt. 
+
+Grid cell
+- Området mellom fire grid lines. Se på det som en celle i en tabell. 
+
 ---
 
 class: cols two
-# Colspan
+# Grid-column & Grid-row
 
 .col[
 
@@ -471,10 +485,16 @@ class: cols two
 </style>
 ]
 
+???
+
+Det jeg nettopp sa blir veldig relevant når vi begynner å lage celler som skal gå over flere kolonner.
+
+Ta en kikk på dette gridet der vi har tre celler. Så ønsker vi at den ene cellen skal dekke to kolonner mens de to andre skal ligge under. Dette er ganske enkelt å få til med CSS-grid: 
+
 ---
 
 class: cols two
-# Colspan
+# Grid-column & Grid-row
 
 .col[
   ```html
@@ -525,10 +545,24 @@ class: cols two
 </style>
 ]
 
+???
+
+For hver celle kan vi spesifisere på hvilken grid line den skal starte og på hvilken grid line den skal slutte. 
+
+Vi spesifiserer start med grid-column-start
+Vi spesifiserer slutt med grid-column-end
+
+Minuset med å gjøre det på denne måten er at vi har hardkodet at cellen skal slutte på grid-line 3. 
+
+Hva skjer da om vi legger til en ny kolonne? Da vil ikke cellen gå helt til slutten.
+
+Dette kan vi løse ved å i stedet si at cellen skal slutte på grid-line nummer -1. 
+
+
 ---
 
 class: cols two
-# Colspan
+# Grid-column & Grid-row
 
 .col[
   ```html
@@ -584,7 +618,7 @@ class: cols two
 ---
 
 class: cols two
-# Colspan
+# Grid-column & Grid-row
 
 .col[
   ```html
@@ -636,6 +670,14 @@ class: cols two
 </style>
 ]
 
+???
+
+Det hele kan vi også angi med short-hand-notation på denne måten. 
+
+I stedet for grid-column-start og -end, skriver vi bare grid-column, og så angir vi to verdier med en / mellom. Den første verdien er start og den siste verdien er end. 
+
+Denne egenskapen kan også brukes på rader: grid-row. 
+
 ---
 
 class: cols two
@@ -684,6 +726,12 @@ class: cols two
 }
 </style>
 ]
+
+???
+
+Span er en annen nyttig ting vi kan bruke. 
+
+Da spesifiserer vi hvor mange tracks eller kolonner en celle skal gå over. 
 
 ---
 
@@ -741,6 +789,10 @@ class: cols two
 </style>
 ]
 
+???
+
+denne cellen vil da alltid dekke to kolonner uavhengig av hvor i gridet den befinner seg. 
+
 ---
 
 class: cols two
@@ -796,6 +848,10 @@ class: cols two
 }
 </style>
 ]
+
+???
+
+Vi kan gjøre det samme med rader. 
 
 ---
 
