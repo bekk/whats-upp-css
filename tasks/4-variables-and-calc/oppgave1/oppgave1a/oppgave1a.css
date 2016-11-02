@@ -1,0 +1,43 @@
+/*
+Oppgave 1a
+
+Har her to knapper. For å endre farge må vi legge til masse ekstra css
+1. Bruk custom properties til å fjerne unødvendig kode.
+2. Legg til en ekstra knapp i htmlen. Gi denne en helt annen farge, uten å definere en ekstra klasse.
+
+*/
+
+
+button {
+  border: .1em solid black;
+  background: transparent;
+  color: black; 
+}
+
+button:hover {
+  background: black;
+  color: white;
+}
+
+button.pink {
+  border-color: #f06;
+  color: #f06;
+}
+
+button.pink:hover {
+  background: #f06;
+  color: white;
+}
+
+
+/*Ekstra styling*/
+
+body {
+  font-family: 'helvetica neue', sans-serif;
+}
+
+button {
+  font-size: 1.4em;
+  padding: .75em 1em;
+  border-radius: .5em;
+}

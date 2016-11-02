@@ -1,0 +1,27 @@
+/*
+Oppgave 2
+Denne oppgaven er passe "fri". Tanken er å eksperimentere med dynamisk endring av variabler.
+De fleste av dere har sikkert gjort dette før, men tenk at det nå kun er nødvendig sette variabelen ETT sted
+
+
+1. Sett input-slideren til å styre ulike properties på bildet
+   Eks: -rotasjonsvinkel
+        -størrelse
+        -farge (hsl)
+        -border-radius
+        ++++
+        Bruk calc til å legge på riktige enheter
+
+Bonus: Prøv med et tekstinput
+Bonus: Animer hvor musen er
+
+*/
+
+.photo {
+  height: 400px;
+}
+
+body {
+  text-align: center;
+  font-family: 'helvetica neue', sans-serif;
+}

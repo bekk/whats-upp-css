@@ -1,0 +1,87 @@
+/*
+Det norske flagget i CSS. Wheey!
+1. endre dimensjonene => variabler
+2. Kan vi lage noen andre flagg på en enkel måte?
+
+3. La oss gjøre det responsivt.
+   En ting er å hendre bredde. Men hvordan får vi bredden og høyden til å bevare samme forhold?
+
+   Vi vil ha vwmax
+
+   Men når vi kommer under en viss størrelse, så har vi ikke lyst til å endre på noen ting.
+
+
+*/
+
+
+// :root {
+//   --flag-width: 22;
+//   --flag-height: 16;
+//   --white-stripe-thickness: 4;
+//   --white-stripe-offset: 6;
+//   --blue-stripe-thickness: 2;
+//   --blue-stripe-offset: 7;
+// }
+
+:root {
+  --flag-width: calc(100vw * 22 / 22);
+  --flag-height: calc(var(--flag-width) * 16 / 22);
+  --white-stripe-thickness: calc(var(--flag-width) * 4 / 22);
+  --white-stripe-offset: calc(var(--flag-width) * 6 / 22);
+  --blue-stripe-thickness: calc(var(--flag-width) * 2 / 22);
+  --blue-stripe-offset: calc(var(--flag-width) * 7 / 22);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  text-align: center;
+  font-family: 'helvetica neue', sans-serif;
+}
+
+.flag {
+  position: relative;
+  width: var(--flag-width);
+  height: var(--flag-height);
+  background: #ED2939;
+}
+
+.white-stripe-horizontal {
+  position: absolute;
+  top: var(--white-stripe-offset);
+  height: var(--white-stripe-thickness);
+  width: var(--flag-width);
+  background: white;
+}
+
+.white-stripe-vertical {
+  position: absolute;
+  left: var(--white-stripe-offset);
+  height: var(--flag-height);
+  width: var(--white-stripe-thickness);
+  background: white;
+}
+
+.blue-stripe-horizontal {
+  position: absolute;
+  top: var(--blue-stripe-offset);
+  height: var(--blue-stripe-thickness);
+  width: var(--flag-width);
+  background: #002664;
+}
+
+.blue-stripe-vertical {
+  position: absolute;
+  left: var(--blue-stripe-offset);
+  height: var(--flag-height);
+  width: var(--blue-stripe-thickness);
+  background: #002664;
+}
+
+@media (min-width: 1000px) {
+  :root {
+    --flag-width: 1000px;
+  }
+}

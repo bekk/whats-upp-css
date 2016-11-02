@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oppgave 3</title>
+    <link rel="stylesheet" href="losningsforslag3.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  </head>
+  <body>
+    <header>
+      <h1>Oppgave 3</h1>
+      <p>Når properties settes med var(--property), vil de endres dynamisk dersom --property endrer verdi.</br>
+      Det er imidlertid ikke mulig å endre --property uten litt javascript (enda).</br>
+      Dette skal ikke være en js-workshop, så bruk gjerne løsningsforslag.js-fila
+    </header>
+    <main>
+      <input type="range" id="property1" min="100" max="1000" value="400">
+      <input type="range" id="property2" min="0" max="100" value="0">
+      <input type="range" id="property3" min="0" max="100" value="0">
+      <div class="display">
+        <img class="photo" src="kitten.jpg">
+      </div>
+    </main>
+     <script type="text/javascript" src="oppgave3.js"></script>
+  </body>
+</html>

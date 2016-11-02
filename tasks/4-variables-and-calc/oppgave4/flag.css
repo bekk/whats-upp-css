@@ -1,0 +1,51 @@
+/*
+Her er det norske flagget, men det er jo kjedelig at det ikke er responsivt!
+BESKRIVELSE
+
+*/
+
+
+
+body {
+  text-align: center;
+  font-family: 'helvetica neue', sans-serif;
+}
+
+.flag {
+  position: relative;
+  height: 640px;
+  width: 880px;
+  background: #ED2939;
+}
+
+.white-stripe-horizontal {
+  position: absolute;
+  top: 240px;
+  height: 160px;
+  width: 880px;
+  background: white;
+}
+
+.white-stripe-vertical {
+  position: absolute;
+  left: 240px;
+  height: 640px;
+  width: 160px;
+  background: white;
+}
+
+.blue-stripe-horizontal {
+  position: absolute;
+  top: 280px;
+  height: 80px;
+  width: 880px;
+  background: #002664;
+}
+
+.blue-stripe-vertical {
+  position: absolute;
+  left: 280px;
+  height: 640px;
+  width: 80px;
+  background: #002664;
+}

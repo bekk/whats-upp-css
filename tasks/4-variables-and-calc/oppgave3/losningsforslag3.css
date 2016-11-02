@@ -1,0 +1,10 @@
+.photo {
+  height: calc(var(--property1, 400) * 1px);
+  border: 5px solid hsl(var(--property2, 0), 100%, 50%);
+  transform: rotateZ(calc(var(--property3) * 1deg));
+}
+
+body {
+  text-align: center;
+  font-family: 'helvetica neue', sans-serif;
+}

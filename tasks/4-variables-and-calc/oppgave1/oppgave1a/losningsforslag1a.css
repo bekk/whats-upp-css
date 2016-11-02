@@ -1,0 +1,44 @@
+button {
+  border: .1em solid var(--color, black);
+  background: transparent;
+  color: var(--color, black);
+}
+
+button:hover {
+  background: var(--color, black);
+  color: white;
+}
+
+button.pink {
+  --color: #f06;
+}
+
+
+/*
+Det går også an å sette:
+
+button {
+  ...
+  --btn-color: var(--color, black);
+  border: .1em solid var(--btn-color);
+  ...
+}
+
+button:hover {
+  background: var(--btn-color);
+  ...
+}
+
+for å slippe og sette fallback-verdien hele tiden
+*/
+
+
+body {
+  font-family: 'helvetica neue', sans-serif;
+}
+
+button {
+  font-size: 1.4em;
+  padding: .75em 1em;
+  border-radius: .5em;
+}

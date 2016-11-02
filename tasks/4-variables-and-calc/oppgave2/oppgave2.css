@@ -1,0 +1,32 @@
+/*
+Oppgave 2
+
+1. Bruk calc() for å sette bredden til den rosa boksen (.responsive).
+   De boksene skal sammenlagt ha en bredde på 100%.
+2. Sett margin-left på den grå boksen ved å bruke en variabel. 
+   Husk å oppdatere bredden til den rosa boksen.
+
+*/
+
+
+.box {
+  display: inline-block;
+  color: #fff;
+  height: 200px;
+  --margin: ;
+}
+
+.responsive {
+  background-color: #f06;
+  width: 200px;
+}
+
+.fixed-width {
+  background-color: #565656;
+  width: 200px;
+}
+
+
+body {
+  font-family: 'helvetica neue', sans-serif;
+}

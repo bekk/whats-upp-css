@@ -1,0 +1,22 @@
+.box {
+  display: inline-block;
+  color: #fff;
+  height: 200px;
+  --margin: 20px;
+}
+
+.responsive {
+  background-color: #f06;
+  width: calc(100% - 200px - var(--margin, 0px));
+}
+
+.fixed-width {
+  background-color: #565656;
+  width: 200px;
+  margin-left: var(--margin, 0);
+}
+
+
+body {
+  font-family: 'helvetica neue', sans-serif;
+}
