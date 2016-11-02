@@ -4,13 +4,15 @@ OPPGAVE 1
 
 1) Lag griden lik skjermbildet.
 
+Detaljer: 
+- Den andre kolonnen er dobbelt så stor som kolonne 1 og 3.
+- Den første raden er større enn den andre
+- Plassen mellom radene er større enn plassen mellom kolonnene
+
 */
 
 .wrapper {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-gap: 10px;
-	grid-template-rows: auto;
+	/* Skriv inn din css her */
 }
 
 /* Styling */

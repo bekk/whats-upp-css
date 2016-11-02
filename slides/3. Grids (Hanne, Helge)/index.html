@@ -38,7 +38,6 @@
       grid-template-columns: repeat(3, 100px);
       grid-gap: 20px;
       margin: 5px;
-      margin-left: 100px;
     }
 
     .grid-box {
@@ -62,12 +61,6 @@
 
     .faded {
       opacity: 0.5;
-    }
-
-    .half-width {
-      display: inline-block;
-      max-width: 45%;
-      vertical-align: top;
     }
 
     .vegveven-grid {
@@ -146,32 +139,34 @@ Rekk opp hånden de som husker når vi fikset dette med tables.
 I nyere tid, ca hele den tiden jeg har jobbet med frontend, har vi jobbet ekstensivt med floats. Men så, for et par år siden, ble det plutselig OK å bruke flexbox. Og det har vært en revolusjon, blant annet når det kommer til å lage grids. 
 
 ---
+class: cols two
 
 # CSS grids vs flexbox
 
-
-<div class="half-width">
-  <div class="flexbox-horizontal">
-    <div class="flexbox-box"></div>
-    <div class="flexbox-box"></div>
-    <div class="flexbox-box"></div>
-  </div>
-
-  <div class="flexbox-vertical">
-    <div class="flexbox-box"></div>
-    <div class="flexbox-box"></div>
-    <div class="flexbox-box"></div>
-  </div>
+.col[
+<div class="flexbox-horizontal">
+  <div class="flexbox-box"></div>
+  <div class="flexbox-box"></div>
+  <div class="flexbox-box"></div>
 </div>
+
+<div class="flexbox-vertical">
+  <div class="flexbox-box"></div>
+  <div class="flexbox-box"></div>
+  <div class="flexbox-box"></div>
+</div>
+]
 
 ???
 CSS grids, som vi skal lære i dag, kommer ikke til å erstatte flexbox. Flexbox er et fantastisk verktøy for å sette opp grids i èn dimensjon, enten på X-aksen eller Y-aksen.
 
 ---
+class: cols two
 
- # CSS grids vs flexbox
+# CSS grids vs flexbox
 
-<div class="faded half-width">
+.col[
+<div class="faded">
   <div class="flexbox-horizontal">
     <div class="flexbox-box"></div>
     <div class="flexbox-box"></div>
@@ -184,18 +179,17 @@ CSS grids, som vi skal lære i dag, kommer ikke til å erstatte flexbox. Flexbox
     <div class="flexbox-box"></div>
   </div>
 </div>
+]
 
-
- <div class="half-width">
-  <div class="grid-example">
-    <div class="grid-box"></div>
-    <div class="grid-box"></div>
-    <div class="grid-box"></div>
-    <div class="grid-box"></div>
-    <div class="grid-box"></div>
-  </div>
+.col[
+<div class="grid-example">
+  <div class="grid-box"></div>
+  <div class="grid-box"></div>
+  <div class="grid-box"></div>
+  <div class="grid-box"></div>
+  <div class="grid-box"></div>
 </div>
-
+]
 ???
 CSS grids sin styrke kommer frem når vi skal ha grids der noder i gridet skal strekke seg over flere akser, enten i høyden eller bredden (eller begge). 
 
@@ -205,7 +199,7 @@ CSS grids sin styrke kommer frem når vi skal ha grids der noder i gridet skal s
 
 Vegveven - Statens vegvesen sitt intranett
 
-<img src="./images/vegveven-grid.png" class="oppgave-1" />
+<img src="./images/vegveven-grid.png" class="vegveven-grid" />
 
 
 ???
@@ -216,10 +210,7 @@ For å gi et eksempel. Dette er forsiden til Vegveven, Statens vegvesens intrane
 
 # Nettleserstøtte
 
-<ul id="caniuse--result-list"
-    data-propName="css-grid"
-    data-browsers="ie safari firefox chrome edge">
-  </ul>
+<img src="./images/browser-support.png" class="oppgave" />
 
 ???
 
@@ -274,9 +265,9 @@ Hvordan lager man et grunnleggende grid? Først trenger vi en wrapper rundt elem
 ---
 
 class: cols two
-# Fractional units
+# Fraction units
 
-Fractional units (<code>fr</code>) angir hvor mye av tilgjengelig plass elementet kan bruke.
+Fraction units (<code>fr</code>) angir hvor mye av tilgjengelig plass elementet kan bruke.
 
 .col[```html
 <div class="wrapper">
@@ -395,8 +386,13 @@ Det andre konseptet er en funksjon som heter minmax(). Den tar to verdier, hvilk
 
 ---
 
+(Foto: Bart Everson)
+<img src="./images/grid.jpg" class="oppgave" />
+
+---
+
 class: cols two
-# Grid lines
+# Grid lines, Grid tracks, Grid cell
 
 .col[
 - Rutenettet til gridet (de grå linjene)
@@ -429,10 +425,26 @@ class: cols two
 </style>
 ]
 
+???
+
+Se på gridet som et rutenett
+
+Grid lines
+- Gridet består av grid linesKan være horisontale eller vertikale
+- Kan refereres til med nummer eller tall
+- 1, 2, 3
+
+Grid track 
+- Området mellom to grid lines. 
+- Vertikalt kan du se på det som en kolonne, men en grid track kan også gå horisontalt. 
+
+Grid cell
+- Området mellom fire grid lines. Se på det som en celle i en tabell. 
+
 ---
 
 class: cols two
-# Colspan
+# Grid-column & Grid-row
 
 .col[
 
@@ -474,10 +486,16 @@ class: cols two
 </style>
 ]
 
+???
+
+Det jeg nettopp sa blir veldig relevant når vi begynner å lage celler som skal gå over flere kolonner.
+
+Ta en kikk på dette gridet der vi har tre celler. Så ønsker vi at den ene cellen skal dekke to kolonner mens de to andre skal ligge under. Dette er ganske enkelt å få til med CSS-grid: 
+
 ---
 
 class: cols two
-# Colspan
+# Grid-column & Grid-row
 
 .col[
   ```html
@@ -528,10 +546,24 @@ class: cols two
 </style>
 ]
 
+???
+
+For hver celle kan vi spesifisere på hvilken grid line den skal starte og på hvilken grid line den skal slutte. 
+
+Vi spesifiserer start med grid-column-start
+Vi spesifiserer slutt med grid-column-end
+
+Minuset med å gjøre det på denne måten er at vi har hardkodet at cellen skal slutte på grid-line 3. 
+
+Hva skjer da om vi legger til en ny kolonne? Da vil ikke cellen gå helt til slutten.
+
+Dette kan vi løse ved å i stedet si at cellen skal slutte på grid-line nummer -1. 
+
+
 ---
 
 class: cols two
-# Colspan
+# Grid-column & Grid-row
 
 .col[
   ```html
@@ -587,7 +619,7 @@ class: cols two
 ---
 
 class: cols two
-# Colspan
+# Grid-column & Grid-row
 
 .col[
   ```html
@@ -639,6 +671,14 @@ class: cols two
 </style>
 ]
 
+???
+
+Det hele kan vi også angi med short-hand-notation på denne måten. 
+
+I stedet for grid-column-start og -end, skriver vi bare grid-column, og så angir vi to verdier med en / mellom. Den første verdien er start og den siste verdien er end. 
+
+Denne egenskapen kan også brukes på rader: grid-row. 
+
 ---
 
 class: cols two
@@ -687,6 +727,12 @@ class: cols two
 }
 </style>
 ]
+
+???
+
+Span er en annen nyttig ting vi kan bruke. 
+
+Da spesifiserer vi hvor mange tracks eller kolonner en celle skal gå over. 
 
 ---
 
@@ -744,6 +790,10 @@ class: cols two
 </style>
 ]
 
+???
+
+denne cellen vil da alltid dekke to kolonner uavhengig av hvor i gridet den befinner seg. 
+
 ---
 
 class: cols two
@@ -800,6 +850,10 @@ class: cols two
 </style>
 ]
 
+???
+
+Vi kan gjøre det samme med rader. 
+
 ---
 
 # Oppgave 2: Holy Grail
@@ -836,6 +890,175 @@ class: cols two
 
 - Gjør det responsivt!
 - Klarer du det uten media queries?
+
+---
+
+# grid-auto-rows
+
+<code>grid-auto-rows</code> gir riktig antall rader med ønsket høyde.
+
+
+```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(120px, 1fr)
+}
+```
+
+???
+
+---
+
+class: cols two
+# grid-auto-flow
+
+.col[
+```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box wide">3</div>
+  <div class="box">4</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.wide {
+  grid-column: span 3;
+}
+```
+]
+.col[
+  <style>
+  .ex-flow-1 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .ex-flow-1 .wide {
+    grid-column: span 3;
+  }
+  </style>
+  <div class="ex-flow-1">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box wide">3</div>
+    <div class="box">4</div>
+  </div>
+]
+
+???
+
+---
+
+class: cols two
+# grid-auto-flow
+
+.col[
+  ```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box wide">3</div>
+  <div class="box">4</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: dense;
+}
+
+.wide {
+  grid-column: span 3;
+}
+```
+]
+.col[
+  <style>
+  .ex-flow-2 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: dense;
+  }
+  .ex-flow-2 .wide {
+    grid-column: span 3;
+  }
+  </style>
+  <div class="ex-flow-2">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box wide">3</div>
+    <div class="box">4</div>
+  </div>
+]
+
+???
+
+---
+
+# auto-fill
+
+<code>grid-template-columns</code> kombinert med <code>auto-fill</code> og <code>minmax</code> genererer så mange kolonner som det er plass til.
+
+Fungerer til nå bare i Firefox med flagget <code>layout.css.grid.enabled</code>.
+
+
+```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+```
+
+---
+
+# Lenker
+
+CSS-tricks: Complete guide to grid - 
+https://css-tricks.com/snippets/css/complete-guide-grid/
+
+Grid by example - 
+http://gridbyexample.com/
+
+Eksempel på avansert grid - 
+http://codepen.io/anon/pen/JbPWQp
+
+???
+
+For det må sies, CSS grids har heller dårlig støtte inntil videre. Men når denne teknologien støttes skal vi være klare til å bruke den. 
 
 ---
 
