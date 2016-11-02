@@ -38,7 +38,6 @@
       grid-template-columns: repeat(3, 100px);
       grid-gap: 20px;
       margin: 5px;
-      margin-left: 100px;
     }
 
     .grid-box {
@@ -62,12 +61,6 @@
 
     .faded {
       opacity: 0.5;
-    }
-
-    .half-width {
-      display: inline-block;
-      max-width: 45%;
-      vertical-align: top;
     }
 
     .vegveven-grid {
@@ -146,32 +139,34 @@ Rekk opp hånden de som husker når vi fikset dette med tables.
 I nyere tid, ca hele den tiden jeg har jobbet med frontend, har vi jobbet ekstensivt med floats. Men så, for et par år siden, ble det plutselig OK å bruke flexbox. Og det har vært en revolusjon, blant annet når det kommer til å lage grids. 
 
 ---
+class: cols two
 
 # CSS grids vs flexbox
 
-
-<div class="half-width">
-  <div class="flexbox-horizontal">
-    <div class="flexbox-box"></div>
-    <div class="flexbox-box"></div>
-    <div class="flexbox-box"></div>
-  </div>
-
-  <div class="flexbox-vertical">
-    <div class="flexbox-box"></div>
-    <div class="flexbox-box"></div>
-    <div class="flexbox-box"></div>
-  </div>
+.col[
+<div class="flexbox-horizontal">
+  <div class="flexbox-box"></div>
+  <div class="flexbox-box"></div>
+  <div class="flexbox-box"></div>
 </div>
+
+<div class="flexbox-vertical">
+  <div class="flexbox-box"></div>
+  <div class="flexbox-box"></div>
+  <div class="flexbox-box"></div>
+</div>
+]
 
 ???
 CSS grids, som vi skal lære i dag, kommer ikke til å erstatte flexbox. Flexbox er et fantastisk verktøy for å sette opp grids i èn dimensjon, enten på X-aksen eller Y-aksen.
 
 ---
+class: cols two
 
- # CSS grids vs flexbox
+# CSS grids vs flexbox
 
-<div class="faded half-width">
+.col[
+<div class="faded">
   <div class="flexbox-horizontal">
     <div class="flexbox-box"></div>
     <div class="flexbox-box"></div>
@@ -184,18 +179,17 @@ CSS grids, som vi skal lære i dag, kommer ikke til å erstatte flexbox. Flexbox
     <div class="flexbox-box"></div>
   </div>
 </div>
+]
 
-
- <div class="half-width">
-  <div class="grid-example">
-    <div class="grid-box"></div>
-    <div class="grid-box"></div>
-    <div class="grid-box"></div>
-    <div class="grid-box"></div>
-    <div class="grid-box"></div>
-  </div>
+.col[
+<div class="grid-example">
+  <div class="grid-box"></div>
+  <div class="grid-box"></div>
+  <div class="grid-box"></div>
+  <div class="grid-box"></div>
+  <div class="grid-box"></div>
 </div>
-
+]
 ???
 CSS grids sin styrke kommer frem når vi skal ha grids der noder i gridet skal strekke seg over flere akser, enten i høyden eller bredden (eller begge). 
 
