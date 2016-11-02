@@ -899,21 +899,168 @@ Vi kan gjøre det samme med rader.
 
 ---
 
-# grid-auto-rows, grid-auto-flow og auto-fill
+# grid-auto-rows
 
-- <code>grid-template-columns: repeat(auto-fill, minmax(120px, 1fr))</code> lager så mange kolonner som det er plass til
-- <code>grid-auto-rows: minmax(120px, 1fr)</code> lager så mange rows som nødvendig, med angitt høyde
-- <code>grid-auto-flow: dense</code> fyller ledig plass
+<code>grid-auto-rows</code> gir riktig antall rader med ønsket høyde.
 
-http://codepen.io/anon/pen/JbPWQp
+
+```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(120px, 1fr)
+}
+```
+
+???
+
+---
+
+class: cols two
+# grid-auto-flow
+
+.col[
+```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box wide">3</div>
+  <div class="box">4</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.wide {
+  grid-column: span 3;
+}
+```
+]
+.col[
+  <style>
+  .ex-flow-1 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .ex-flow-1 .wide {
+    grid-column: span 3;
+  }
+  </style>
+  <div class="ex-flow-1">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box wide">3</div>
+    <div class="box">4</div>
+  </div>
+]
+
+???
+
+---
+
+class: cols two
+# grid-auto-flow
+
+.col[
+  ```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box wide">3</div>
+  <div class="box">4</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: dense;
+}
+
+.wide {
+  grid-column: span 3;
+}
+```
+]
+.col[
+  <style>
+  .ex-flow-2 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: dense;
+  }
+  .ex-flow-2 .wide {
+    grid-column: span 3;
+  }
+  </style>
+  <div class="ex-flow-2">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box wide">3</div>
+    <div class="box">4</div>
+  </div>
+]
+
+???
+
+---
+
+# auto-fill
+
+<code>grid-template-columns</code> kombinert med <code>auto-fill</code> og <code>minmax</code> genererer så mange kolonner som det er plass til.
+
+Fungerer til nå bare i Firefox med flagget <code>layout.css.grid.enabled</code>.
+
+
+```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+```
 
 ---
 
 # Lenker
 
+CSS-tricks: Complete guide to grid - 
 https://css-tricks.com/snippets/css/complete-guide-grid/
 
+Grid by example - 
 http://gridbyexample.com/
+
+Eksempel på avansert grid - 
+http://codepen.io/anon/pen/JbPWQp
 
 ???
 
