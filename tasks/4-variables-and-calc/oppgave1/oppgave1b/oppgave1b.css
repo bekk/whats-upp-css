@@ -7,35 +7,24 @@ Oppgave 1b: Arving og egendefinerte short-/longhands
 3. La de mindre boksene i .box1 arve --rot-angle-verdien allikevel, uten å eksplisitt sette verdien til 20deg;
 
 
-
 4. Gi .box1 følgende skygge: 
 
     box-shadow: 15px 25px 9px 5px #4f184f;
   
    Vi har nå lyst til å endre farge på denne skyggen når vi hovrer over boksen, uten å måtte gjenta resten deklarasjonen.
-   Dette kan løses ved å lage en egendefinert "longhand".
+   Dette kan løses ved å lage en egendefinert shorthand.
 
-   a) Definer box-shadow-parametrene i *-selektoren som variabler. 
-        (Box-shadow har følgende mulige parametre: inset, offset-x, offset-y, blur-radius, spread-radius, color. I den rekkefølgen).
-   b) Definer box-shadow i *-selektoren, ved å bruke de nye variablene.
-        box-shadow: var, var...
-   c) Sett verdien til de fem nødvendige variablene i .box1-selektoren. Og sett farge-variablen til en hvilken som helst annen verdi når boksen hovres.
-
-
-
-
-  Altså: Implementer en egen longhand, slik at det holder å deklarere en custom variabel for farge
-  Ønsker du 
+   a) Lag en global variabel som inneholder de faste parameterene.
+   b) Skriv om box-shadow-verdien til .box1, og bruk samme metode for å endre farge når boksen hovres over.
 
 */
 
 * {
   transform: rotate(var(--rot-angle));
-  --rot-angle: ;
 }
 
 .large-box {
- // --rot-angle: 20deg;
+ --rot-angle: 20deg;
 }
 
 
