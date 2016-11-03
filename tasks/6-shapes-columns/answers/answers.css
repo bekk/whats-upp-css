@@ -1,4 +1,6 @@
 /*
+## CLIP_PATH & SHAPE
+
 # You can find the final result in the answer directory, use this or the screen shots in the 
 # design-layouts directory to see what you should be creating.
 #
@@ -13,6 +15,8 @@
 # Create the white stars that represent the stars on the American flag in the header.
 
 - Remember we are ceating a responsive site.
+- USE polygon(x y, x y, x y, ....) 
+- It doesn't have to be a perfect star, don't get bogged down on this.
 
  */
 
@@ -34,6 +38,7 @@
 .trump-one {
   float: right;
   shape-image-threshold: 0;
+  shape-margin: 10px;
   shape-outside: url(../images/trump-1.png);
 }
 

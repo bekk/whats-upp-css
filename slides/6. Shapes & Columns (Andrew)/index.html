@@ -1,10 +1,25 @@
-
 <!DOCTYPE html>
 <html>
   <head>
     <title>BEKK-theme for remark</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../../node_modules/remark-bekk/dist/bekk.css" type="text/css" rel="stylesheet">
+    <link href="../../node_modules/caniuse-component/styles.css" type="text/css" rel="stylesheet">
+
+    <style>
+      iframe {
+        border-width: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .remark-slide .remark-slide-content .circle {
+        border-radius: 100px;
+        height: 200px;
+        width: 200px;
+        line-height: 200px;
+      }
+    </style>
   </head>
   <body class="bekk-black">
     <textarea id="source">
@@ -22,52 +37,71 @@ Andrew Byles
 
 28.10.2016
 
-
 ---
 
 class: agenda
 
-# XXXXXX XXXXX
+# What?  
 
-* xxxx
-* xxxxxx
-* xxx xxxx
-* xxxxxx
-* xxxxxx
-* xxxx
-
+* clip-path
+* shape
+* columns
 
 ---
+background-image: url(images/clip-path.jpg)
 class: middle center
 
-# (-webkit-)clip-path
+# clip-path
 
+.circle.red.top-right[
+    Experimental
+  ]
+
+
+???
 Prevents a portion of an element from being displayed, by defining a clipping region.
+
+In the task that follow we will be using the -webkit- prefix, to get it working in Chrome.
+
+Think vectors to create content masks.
 
 ---
 
-# Clip Path - Basic Shape
-
---
-
-.center[Centered text]
-
---
-
-* A basic-shap function. Such a shape will make use of the specified geometry-box to size and position the basic shape. 
-* If no geometry box is specified, the border-box will be used as reference box.
+# Nettleserstøtte
+  <iframe src="caniuse-clippath.html"></iframe>
 
 ???
-TEST
+This is an experimental technology, all the major browser excluding IE have partial support.
+
+---
+background-image: url(images/basic-shape.jpg)
+class: middle center
+
+# Clip-path: Basic Shape
+
+???
+Basic-shape functions, shapes will make use of the specified geometry-box to size and position the basic shape. 
+
+If no geometry box is specified, the border-box will be used as reference box.
+
+If that is unclear, I wil go over geometry-box shortly.
+
 ---
 class:split
 ![bilde](images/clip-path-circle.jpg)
 
 # Clip Path - Circle
 
+## Radius 
+## Optional x, y co-ordinates
+
 ```CSS
   clip-path: circle(R at x y);
 ```
+
+???
+A circle is created by defining a radius, and optionally x, y co-ordinates for the center of the circle,
+relative to the geometry box.
 
 ---
 class:split
@@ -75,9 +109,14 @@ class:split
 
 # Clip Path - Polygon
 
+## Series of x y co-ordinates
+
 ```CSS
   clip-path: polygon(x y , x y, ...);
 ```
+
+???
+A polygon is created by specifing a series of xy co-ordinets seperated by a comma.
 
 ---
 class:split
@@ -85,11 +124,14 @@ class:split
 
 # Clip Path - Inset
 
-```CSS
-  /* Distance from each geometry box edge */
-    
+## Distance from each geometry box edge
+
+```CSS  
   clip-path: inset(t, r, b, l);
 ```
+
+???
+Inset defines a quatrilateral, by defining the distance from the geometry box, top, right, bottom, left respectively.
 
 ---
 class:split
@@ -97,9 +139,17 @@ class:split
 
 # Clip Path - Ellipse
 
+## X Radius
+## Y Radius 
+## Optional x, y co-ordinates
+
 ```CSS
   clip-path: ellipse(Rx Ry at x y);
 ```
+
+???
+An ellipse is similar to circle where by the circle center can be optionally defined. 
+It differs by requiring both an X and Y radius to be defined.
 
 ---
 class:split
@@ -107,7 +157,7 @@ class:split
 
 # Clip Path - Url
 
-The path to a clipping element.
+## Inline
 
 ```XML
 <svg height="0" width="0">
@@ -119,54 +169,398 @@ The path to a clipping element.
 </svg>
 ```
 
+## The path to a clipping element
+
 ```CSS
-  clip-path: url(my-clippath.svg); 
+  clip-path: url(clip.svg#svgClip);
 ```
 
+???
+URL represents a reference to a clip path element. 
+
+This could be an SVG file or an inline SVG element.
+
+I got this to work in Chrome using an inline SVG element but not the file reference.
+
 ---
+background-image: url(images/geometry-box-bg.jpg)
+class: middle center
+
+# Clip-path: Geometry-box
+
+???
+Back to geometry box I mentioned earlier
+
+---
+class:split
+![bilde](images/geometry-box.jpg)
 
 # Geometry Box
 
-* If specified in combination with a basic-shape, it provides the reference box for the basic shape. 
-* If specified by itself, it uses the edges of the specified box including any corner shaping (e.g. defined by border-radius) as clipping path. 
+If specified in combination with a basic-shape, it provides the reference box for the basic shape.
 
-fill-box
-Uses the object bounding box as reference box.
+???
+Coildn't get this working reliably with clip-path in Chrome.
 
-stroke-box
-Uses the stroke bounding box as reference box.
+If specified in combination with a basic-shape, it provides the reference box for the basic shape. 
 
-view-box
-Uses the nearest SVG viewport as reference box. If a viewBox attribute is specified for the element creating the SVG viewport, the reference box is positioned at the origin of the coordinate system established by the viewBox attribute and the dimension of the reference box is set to the width and height values of the viewBox attribute.
+If specified by itself, it uses the edges of the specified box including any corner shaping 
+(e.g. defined by border-radius) as clipping path. 
 
-margin-box
-Uses the margin box as the reference box.
+--
 
-border-box
-Uses the border box as the reference box.
+## content-box
 
-padding-box
-Uses the padding box as the reference box.
+???
+content-box - Uses the content box as the reference box.
 
-content-box
-Uses the content box as the reference box.
+--
 
----
+## padding-box
+
+???
+padding-box - Uses the padding box as the reference box.
+
+--
+
+## border-box
+
+???
+border-box - Uses the border box as the reference box.
+
+--
+
+## margin-box
+
+???
+margin-box - Uses the margin box as the reference box.
+
+--
+
+## fill-box
+
+## stroke-box
+
+## view-box
+
+???
+Fill-box, stroke-box and view-box are relevant to svg clip-path element.
+
+fill-box- Uses the object bounding box as reference box.
+
+stroke-box- Uses the stroke bounding box as reference box.
+
+view-box - Uses the nearest SVG viewport as reference box. If a viewBox attribute is specified for the element 
+creating the SVG viewport, the reference box is positioned at the origin of the coordinate system established by 
+the viewBox attribute and the dimension of the reference box is set to the width and height values of the viewBox attribute.
+
+--
 
 ```CSS
-  /* -webkit-clip-path: url("#myClip"); */
-  
-  /* iOS support */
-  -webkit-mask: url(clip.svg);/*Chrome,Safari*/
-  -webkit-clip-path: url(clip.svg);
-
-  /* Firefox*/
-  clip-path: url(clip.svg#svgClip);
-
+ clip-path: padding-box circle(50%);
 ```
 
+???
+Clip-path example all together
+
 ---
-    </textarea>
+background-image: url(images/shapes.jpg)
+class: middle center
+
+#  Shape
+
+.circle.red.top-right[
+  Partial Support
+]
+
+???
+Shapes is a CSS module that defines geometric shapes for use in CSS values.
+
+Works similar to clip-path, to define shape float 
+
+---
+
+# Nettleserstøtte
+<iframe src="caniuse-shape.html"></iframe>
+
+---
+class:split
+![bilde](images/shape-outside.jpg)
+
+
+# Shape-Outside
+
+## Define the float area for a float
+
+```CSS
+  shape-outside: margin-box circle(50%);
+```
+
+???
+Shape-outside - CSS property uses shape values to define the float area for a float and will cause 
+inline content to wrap around the shape instead of the float's bounding box.
+
+--
+
+## shape-margin
+
+```CSS
+  shape-margin: 20px;
+```
+
+???
+Shape-margin - The shape-margin CSS property adds a margin to shape-outside.
+
+--
+
+## shape-image-threshold
+
+```CSS
+  shape-image-threshold: 0.7;
+```
+
+???
+Shape-image-threshold - CSS property defines the alpha channel threshold used to extract the shape using
+an image as the value for shape-outside. A value of 0.5 means that the shape will enclose all 
+the pixels that are more than 50% opaque
+
+---
+class:split
+![bilde](images/shape-inside.jpg)
+
+# shape-inside
+
+## Float inline content within an element
+
+```CSS
+  shape-inside: circle(50%);
+```
+
+???
+The shape-inside floats inline content within an element.
+
+Haven't seen this working anywhere. 
+
+Nice to have future feature.
+
+---
+background-image: url(images/columns.jpg)
+class: middle center
+
+# Columns
+
+.circle.red.top-right[
+  Partial Support
+]
+
+---
+
+# Nettleserstøtte
+<iframe src="caniuse-column.html"></iframe>
+
+---
+class:split
+![bilde](images/columns-css.jpg)
+
+# Columns
+
+## Define column width and number
+
+```CSS
+  columns: 300px 3;
+```
+
+???
+The column CSS property is a shorthand property allowing to set both the column-width and the 
+column-count properties at the same time.
+
+--
+
+## column-width
+
+```CSS
+  column-width: 300px;
+```
+
+???
+Column-width - CSS property suggests an optimal column width. The column-width is the maximum 
+width a column will become before adding another column.
+
+--
+
+## column-count
+
+```CSS
+  column-count: 3;
+```
+
+???
+Count - obvious
+
+---
+class: cols two
+
+# Column Rule, Fill & Gap
+
+.col[
+  ## column-rule
+
+  ```CSS
+ column-rule: solid 1px #222;
+  ```
+
+  ## column-rule-style
+
+  ```CSS
+ column-rule-style: solid;
+  ```
+
+  ## column-rule-width
+
+  ```CSS
+ column-rule-width: 1px;
+  ```
+
+  ## column-rule-color
+
+  ```CSS
+ column-rule-color: #222;
+  ```
+]
+
+???
+Column-rule - The seperating line between columns. Define type, width and colour in one property origin
+individually.
+
+--
+
+.col[
+  ## column-fill
+
+  ```CSS
+ column-fill: balance;
+  ```
+
+  ## column-gap
+
+  ```CSS
+ column-gap: 20px;
+  ```
+]
+
+???
+Column-fill - Auto and Balance, auto is should be default, but Chrome seems to use balance. Balance creates 
+columns of equal height. Auto would leave the last column shorter than its siblings. The container element would
+need to be of fixed height.
+
+Column-gap - is the spacing between columns.
+
+---
+class: cols three
+
+# Column Break
+
+.col[
+  ## break-after
+
+  ```CSS
+ break-after: auto;
+  ```
+
+  ## break-before
+
+  ```CSS
+ break-before: auto;
+  ```
+
+  ## break-inside
+
+  ```CSS
+ break-inside: auto;
+  ```
+]
+
+.col[
+## Values
+
+* Auto
+
+* Always
+
+* Avoid
+
+* Left
+
+* Right
+
+* Page
+
+* Column
+]
+
+.col[
+## _
+
+* Region
+
+* Recto
+
+* Verso
+
+* Avoid-page
+
+* Avoid-column
+
+* Avoid-region
+]
+
+???
+Break-before - CSS property describes the page, column or region break behavior before the generated box. 
+If there is no generated box, the property is ignored.
+
+Break-after - CSS property describes the page, column, or region break behavior (in other words, 
+how and whether to break) after the generated box. If there is no generated box, the property is ignored.
+
+Break-inside - CSS property describes how the page, column or region break inside the generated box. 
+If there is no generated box, the property is ignored.
+
+//////////////////////////////
+Auto - Initial value. Allows, meaning neither forbid nor force, any break (either page, column or region) to be be inserted before the principle box.
+
+Always - Always force page breaks before the principle box. This is a synonym of page, it has been kept to facilitate transition from page-break-before which is subset of this property.
+
+Avoid - Prevent any break, either page, column or region, to be inserted right before the principle box.
+
+Left - Force one or two page breaks right before the principle box so that the next page is formatted as a left page.
+
+Right - Force one or two page breaks right before the principle box so that the next page is formatted as a right page.
+
+Page - Always force one page break right before the principle box.
+
+Column - Always force one column break right before the principle box.
+
+Region - Always force one region break right before the principle box.
+
+Recto - Force one or two page breaks right before the principle box so that next page is formatted as a recto page, that is a right page in a left-to-right spread or a left page in a right-to-left spread.
+
+Verso - Force one or two page breaks right before the principle box so that next page is formatted as a verso page, that is a left page in a left-to-right spread or a right page in a right-to-left spread.
+
+Avoid-page -  Avoid any page break right before the principle box.
+
+Avoid-column - Avoid any column break right before the principle box.
+
+Avoid-region - Avoid any region break right before the principle box.
+
+---
+background-image: url(images/thanks.jpg)
+class: middle center
+
+#  Thanks
+
+???
+Explain Tasks
+
+</textarea>
 
   <script src="../../node_modules/remark-bekk/vendor/remark.min.js" type="text/javascript"></script>
   <script type="text/javascript">
@@ -177,6 +571,7 @@ Uses the content box as the reference box.
     });
   </script>
 
+  <script src="../../node_modules/caniuse-component/scripts.js" async></script>
 
   </body>
 </html>
