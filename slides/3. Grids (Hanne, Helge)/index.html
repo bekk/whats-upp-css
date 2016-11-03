@@ -214,7 +214,9 @@ For å gi et eksempel. Dette er forsiden til Vegveven, Statens vegvesens intrane
 
 ???
 
-For det må sies, CSS grids har heller dårlig støtte inntil videre. Men når denne teknologien støttes skal vi være klare til å bruke den. 
+CSS grids er dårlig støttet. Men når denne teknologien støttes skal vi være klare til å bruke den.
+
+IE støtter en eldre versjon av specen.
 
 ---
 
@@ -260,7 +262,15 @@ Et enkelt grid.
 
 ???
 
-Hvordan lager man et grunnleggende grid? Først trenger vi en wrapper rundt elementene som skal bli gridet. `display: grid;`. Det er også nyttig med `grid-gap`, plassen mellom elementene. grid-template-columns brukes for å sette antall kolonner. Samme med grid-template-rows, som angir størrelsen på radene.
+Hvordan lager man et grunnleggende grid? 
+
+`display: grid;` på wrapperen rundt. 
+
+`grid-template-columns` brukes for å sette antall kolonner. Samme med `grid-template-rows`, som angir størrelsen på radene. 
+
+`grid-gap` angir plassen mellom elementene.
+
+`div`ene med  klasse `.box` føyer seg inn i kolonnene og radene vi setter på wrapperen. 
 
 ---
 
@@ -303,7 +313,11 @@ Fraction units (<code>fr</code>) angir hvor mye av tilgjengelig plass elementet 
 
 ???
 
-Her ser man det samme gridet som forrige slide, forskjellen ligger i kolonnebreddene vi har satt. I stedet for at de to første kolonnene tar 100px, tar de nå 1fr. Den siste kolonnen tar 3fr, tre ganger så mye som de to første kolonnene. 
+Samme gridet som på forrige slide, eneste forskjell `fr`.
+
+I stedet for 100px, 100px og 300px tar de nå opp 1fr, 1fr og 3fr. 1fr = 1 lik del av plassen gridet kan bruke. Jo flere `fr`-verdier, jo flere ganger må man dele opp plassen. 
+
+En kolonne med `3fr` vil ta opp tre ganger så mye plass som en kolonne med `1fr`.
 
 ---
 
@@ -342,6 +356,13 @@ class: cols two
   </div>
 ]
 
+???
+Se for dere at dere skal lage et grid med mange kolonner der alle skal ta opp like mye plass. Man kan skrive inn alle verdiene i `grid-template-rows`. Eller så kan man bruke `repeat`. 
+
+`repeat` har to parametre, antall ganger det skal repeteres og antall verdier som skal repeteres.
+
+Her vises en verdi som repeteres to ganger, men man kunne ha satt inn flere verdier her, slik at det blir et mønster.  
+
 ---
 
 
@@ -368,7 +389,11 @@ class: cols two
 
 ???
 
-Det andre konseptet er en funksjon som heter minmax(). Den tar to verdier, hvilken minimumsverdi man ønsker og hvilken maksimumsverdi man ønsker. Denne kan brukes for å sette kolonnebredde eller radhøyde.
+`minmax` tar to verdier, en minimumsverdi og en maksimumsverdi.
+
+Her vil den første kolonnen i minste tilfelle være `100px` bred. Hvis den kan ta mer plass tar den `1fr`.
+
+Dette kan også brukes på radhøyde.
 
 ---
 
@@ -1042,6 +1067,61 @@ Fungerer til nå bare i Firefox med flagget <code>layout.css.grid.enabled</code>
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
 }
 ```
+
+---
+
+class: cols two
+# order
+
+.col[
+```html
+<div class="wrapper">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+```
+
+```css
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.box {
+  order: 2;
+}
+
+.box:nth-child(3) {
+  order: 1;
+}
+```
+]
+.col[
+  <style>
+  .ex-order-1 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .ex-order-1 .box {
+    order: 2;
+  }
+  .ex-order-1 .box:nth-child(3) {
+    order: 1;
+  }
+  </style>
+  <div class="ex-order-1">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+]
+
+???
+
+Man kan bruke <code>order</code> for å indikere rekkefølge. Husk at <code>order</code> bare setter rekkefølge blant elementene som har propertyen satt, derfor har alle boksene i dette eksempelet satt <code>order: 2</code>.
 
 ---
 
