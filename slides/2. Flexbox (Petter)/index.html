@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BEKK-theme for remark</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../node_modules/remark-bekk/dist/bekk.css" type="text/css" rel="stylesheet">
+    <link href="../../node_modules/caniuse-component/styles.css" type="text/css" rel="stylesheet">
+  </head>
+  <body class="bekk-black">
+    <textarea id="source">
+
+class: front-page
+
+# Flexbox
+
+## Hvorfor ikke bare bruke `<table>`?
+
+[Github](https://github.com/gnab/remark)
+
+Petter Samuelsen
+
+04/09/2016
+
+---
+
+class: agenda
+
+# Agenda
+
+* Hva er flexbox?
+* Hvem støtter flexbox?
+* Hva løser flexbox?
+* Hvordan bruker man flexbox?
+* Oppgaver
+
+---
+
+# Hva er flexbox
+
+* Flexbox gjør det mulig for et element &aring; endre sine underelementer for å best fylle
+det tilgjengelige rommet.
+
+???
+
+* Flexbox gjør det mulig for et element &aring; endre sine underelementer for å best fylle
+det tilgjengelige rommet.
+
+--
+
+* En flex-container ekspanderer sine underelementer for å fylle tomrom
+eller forminsker dem for &aring; forhindre overflyt.
+
+???
+
+* En flex-container ekspanderer sine underelementer for å fylle tomrom
+eller forminsker dem for &aring; forhindre overflyt.
+
+---
+
+# Hva med støtte?
+
+<ul id="caniuse--result-list"
+  data-propName="flexbox"
+  data-browsers="ie safari firefox chrome edge">
+</ul>
+
+* 98.58% av nordmenn støtter det
+* 97.12% på verdensbasis
+
+???
+
+* 98.58% av nordmenn støtter det
+* 97.12% på verdensbasis
+
+Kan man bruke det? Tja.
+
+---
+
+# Hva løser flexbox?
+
+--
+
+* `<table>` for å lage kolonner
+
+--
+
+```html
+<table>
+   <tr>
+     <td colspan="3">header</td>
+  </tr>
+  <tr>
+    <td>venstre</td>
+    <td>midten</td>
+    <td>høyre</td>
+  </tr>
+  <tr>
+    <td colspan="3">footer</td>
+  </tr>
+</table>
+```
+```html
+spacer.gif, &nbsp; og <br/> for å lage spacings
+```
+--
+[shouldiusetablesforlayout.com](http://shouldiusetablesforlayout.com/)
+
+---
+
+# Hva løser flexbox?
+
+--
+
+Vertikal sentrering med *kjent* høyde:
+
+```html
+<div class="parent">
+  <div class="child"></div>
+</div>
+```
+
+```css
+.parent {
+  position: relative;
+}
+
+.child {
+  position: absolute;
+  top: 50%;
+  height: 100px;
+  margin-top: -50px;
+}
+
+```
+--
+Uff 😕
+
+
+---
+
+# Hva løser flexbox?
+
+Vertikal sentrering med *ukjent* høyde:
+
+```html
+<div class="parent">
+  <div class="child"></div>
+</div>
+```
+
+```css
+.parent {
+  position: relative;
+}
+
+.child {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+```
+--
+Yuck!! 😫
+
+
+---
+
+class: middle center
+
+# Flexbox til unnsetning!! 👨‍🚒
+
+---
+
+class: cols two
+
+# flex-akser
+
+  .col[
+
+    ```css
+    .parent {
+      display: flex;
+      flex-direction: row; /* default value */
+    }
+    ```
+  ]
+
+  .col[
+    ![](images/DirectionRow.png)
+  ]
+
+---
+
+class: cols two
+
+# flex-akser
+
+  .col[
+
+    ```css
+    .parent {
+      display: flex;
+      flex-direction: column;
+    }
+    ```
+  ]
+
+  .col[
+    ![](images/DirectionColumn.png)
+  ]
+
+---
+
+class: center middle bekk-top
+
+# Takk for meg
+
+
+    </textarea>
+
+  <script src="../../node_modules/remark-bekk/vendor/remark.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    var slideshow = remark.create({
+      ratio: '16:9',
+      highlightStyle: 'monokai',
+      highlightLanguage: 'javascript'
+    });
+  </script>
+  <script src="../../node_modules/caniuse-component/scripts.js" async></script>
+
+  </body>
+</html>
