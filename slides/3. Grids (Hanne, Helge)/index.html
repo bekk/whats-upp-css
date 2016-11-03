@@ -920,7 +920,7 @@ Vi kan gjøre det samme med rader.
 
 # grid-auto-rows
 
-<code>grid-auto-rows</code> gir riktig antall rader med ønsket høyde.
+<code>grid-auto-rows</code> setter høyde på rader som ikke har størrelse satt av <code>grid-template-rows</code>.
 
 
 ```html
@@ -943,6 +943,8 @@ Vi kan gjøre det samme med rader.
 ```
 
 ???
+
+Det samme med `grid-auto-columns` for kolonner.
 
 ---
 
@@ -991,6 +993,10 @@ class: cols two
 ]
 
 ???
+
+Hvis man har bokser som går over flere celler, som boks 3 her, ser vi at det blir et hull i gridet der boks 3 egentlig skulle være. 
+
+Hvordan fikser vi dette? 
 
 ---
 
@@ -1042,6 +1048,8 @@ class: cols two
 
 ???
 
+`grid-auto-flow: dense` flytter elementer som passer i tomrommet opp.
+
 ---
 
 # auto-fill
@@ -1067,6 +1075,12 @@ Fungerer til nå bare i Firefox med flagget <code>layout.css.grid.enabled</code>
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
 }
 ```
+
+???
+
+`auto-fill` kan brukes for å stappe så mange kolonner som passer inn i gridets ledige bredde.
+
+Elementer brekker automatisk ned på en ny rad hvis det ikke er plass til de i bredden. 
 
 ---
 
@@ -1123,22 +1137,29 @@ class: cols two
 
 Man kan bruke <code>order</code> for å indikere rekkefølge. Husk at <code>order</code> bare setter rekkefølge blant elementene som har propertyen satt, derfor har alle boksene i dette eksempelet satt <code>order: 2</code>.
 
+HVIS TID
+Begynn på oppgave 4.
+
+
 ---
 
 # Lenker
 
-CSS-tricks: Complete guide to grid - 
-https://css-tricks.com/snippets/css/complete-guide-grid/
-
 Grid by example - 
 http://gridbyexample.com/
 
-Eksempel på avansert grid - 
+CSS-tricks: Complete guide to grid - 
+https://css-tricks.com/snippets/css/complete-guide-grid/
+
+Eksempel på <code>grid-auto-rows</code>, <code>grid-auto-flow</code> og <code>auto-fill</code> - 
 http://codepen.io/anon/pen/JbPWQp
 
 ???
 
-For det må sies, CSS grids har heller dårlig støtte inntil videre. Men når denne teknologien støttes skal vi være klare til å bruke den. 
+Hvis dere vil lære mer anbefaler jeg å gå til gridbyexample.com, lærevideoene deres er verdt å få med seg.
+
+Vi har laget en codepen med de siste konseptene vi har illustrert.
+
 
 ---
 
