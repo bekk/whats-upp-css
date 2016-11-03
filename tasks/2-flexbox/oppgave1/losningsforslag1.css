@@ -1,0 +1,48 @@
+body {
+  display: flex;
+  flex-direction: column; /* Column slik at elementene plasseres under hverandre */
+  min-height: 100vh; /* Sett høyden av body til 100% av viewport. vh = viewport height */
+}
+
+.container {
+  display: flex;
+  flex: 1; /* Fyll hele høyden slik at footer når ned til bunnen */
+}
+
+.middle {
+  flex: 1; /* Fyll hele bredden for få en flytende bredde */
+}
+
+.left {
+  order: -1; /* Plasser venstre kolonne først */
+}
+
+.left, .right {
+  flex: 0 0 10em; /* 10 ganger størrelsen av elementets fontstørrelse */
+}
+
+
+/* Styling. Ikke rør. */
+
+body {
+  margin: 0;
+  font-family: 'Helvetica';
+  color: #fefefe;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 4em;
+}
+
+header, footer {
+  background-color: #FF8440;
+}
+
+.left, .right, .middle {
+  background-color: #8FD1FF;
+}
+
+.middle {
+  margin: 0 10px;
+}
+

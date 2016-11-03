@@ -1,0 +1,72 @@
+/*
+  Oppgave 1.
+
+  Holy Grail Layout.
+
+  - Se oppgave1.png for eksempel på hva du skal lage.
+
+  Kriterier:
+    1. Layouten skal ha en header, footer og tre kolonner der bredden til høyre og venstre kolonne
+    skal ha en fixed bredde og midtens bredde skal være flytende.
+    2. Alle tre kolonner skal ha samme høyde, uavhengig av hvilken kolonne som er høyest.
+    3. Midten (.middle) skal være det første elementet av de tre kolonnene i html-treet.
+    4. Footeren skal sticke til bunnen av siden uavhengig av lengden på innholdet på siden.
+
+  Åpne oppgave1.html i Chrome for å sette i gang.
+ */
+
+
+body {
+
+}
+
+header {
+
+}
+
+.container {
+
+}
+
+.middle {
+
+}
+
+.left {
+
+}
+
+.right {
+
+}
+
+footer {
+
+}
+
+
+
+/*
+  Styling av oppgaven. Ikke noe interessant å se her :-)
+*/
+body {
+  margin: 0;
+  font-family: 'Helvetica';
+  color: #fefefe;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 4em;
+}
+
+header, footer {
+  background-color: #FF8440;
+}
+
+.left, .right, .middle {
+  background-color: #8FD1FF;
+}
+
+.middle {
+  margin: 0 10px;
+}

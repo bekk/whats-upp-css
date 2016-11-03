@@ -83,8 +83,6 @@ Kan man bruke det? Tja.
 
 * `<table>` for å lage kolonner
 
---
-
 ```html
 <table>
    <tr>
@@ -100,6 +98,7 @@ Kan man bruke det? Tja.
   </tr>
 </table>
 ```
+--
 ```html
 spacer.gif, &nbsp; og <br/> for å lage spacings
 ```
@@ -129,7 +128,7 @@ Vertikal sentrering med *kjent* høyde:
   position: absolute;
   top: 50%;
   height: 100px;
-  margin-top: -50px;
+  margin-top: -50px; /* minus padding dersom border-box ikke er satt */
 }
 
 ```
@@ -161,7 +160,7 @@ Vertikal sentrering med *ukjent* høyde:
 }
 ```
 --
-Yuck!! 😫
+Akk 😫
 
 
 ---
