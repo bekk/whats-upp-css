@@ -1,0 +1,69 @@
+/*
+Oppgave 1b: Arving og egendefinerte short-/longhands
+
+1. Fjern utkommenteringen av --rot-angle i .box-selektoren.
+   Hva skjer med de mindre boksene?
+2. Forhindre at verdien av --rot-angle arves av elementer under(/inni) .box, ved å fullføre variabel-deklarasjonen i *-selektoren.
+3. La de mindre boksene i .box1 arve --rot-angle-verdien allikevel, uten å eksplisitt sette verdien til 20deg;
+
+
+
+4. Gi .box1 følgende skygge: 
+
+    box-shadow: 15px 25px 9px 5px #4f184f;
+  
+   Vi har nå lyst til å endre farge på denne skyggen når vi hovrer over boksen, uten å måtte gjenta resten deklarasjonen.
+   Dette kan løses ved å lage en egendefinert "longhand".
+
+   a) Definer box-shadow-parametrene i *-selektoren som variabler. 
+        (Box-shadow har følgende mulige parametre: inset, offset-x, offset-y, blur-radius, spread-radius, color. I den rekkefølgen).
+   b) Definer box-shadow i *-selektoren, ved å bruke de nye variablene.
+        box-shadow: var, var...
+   c) Sett verdien til de fem nødvendige variablene i .box1-selektoren. Og sett farge-variablen til en hvilken som helst annen verdi når boksen hovres.
+
+
+
+
+  Altså: Implementer en egen longhand, slik at det holder å deklarere en custom variabel for farge
+  Ønsker du 
+
+*/
+
+* {
+  transform: rotate(var(--rot-angle));
+  --rot-angle: ;
+}
+
+.large-box {
+ // --rot-angle: 20deg;
+}
+
+
+/*Ekstra styling*/
+
+body {
+  font-family: 'helvetica neue', sans-serif;
+}
+
+main {
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.large-box {
+  padding: 50px;
+  background-color: #f06;
+}
+
+.medium-box {
+  padding: 50px;
+  background-color: pink;
+}
+
+.small-box {
+  box-sizing: border-box;
+  height: 75px;
+  width: 75px;
+  background-color: white;
+}

@@ -1,0 +1,75 @@
+* {
+  transform: rotate(var(--rot-angle));
+  --rot-angle: initial;
+}
+
+.large-box {
+ --rot-angle: 20deg;
+}
+
+
+//3
+.box1 div {
+  --rot-angle: inherit;
+}
+
+
+//4
+* {
+  --box-shadow-x: initial;
+  --box-shadow-y: initial;
+  --box-shadow-blur: initial;
+  --box-shadow-spread: initial;
+  --box-shadow-color: initial;
+  --box-shadow-inset: initial;
+
+  box-shadow: var(--box-shadow-x, 0)
+              var(--box-shadow-y, 0)
+              var(--box-shadow-blur, 0)
+              var(--box-shadow-spread, 0)
+              var(--box-shadow-color, currentColor)
+              var(--box-shadow-inset, );
+}
+
+.box1 {
+  --box-shadow-x: 15px;
+  --box-shadow-y: 25px;
+  --box-shadow-blur: 9px;
+  --box-shadow-spread: 5px;
+  --box-shadow-color: #4f184f;
+}
+
+.box1:hover {
+  --box-shadow-color: yellow;
+}
+
+
+
+/*Ekstra styling*/
+
+body {
+  font-family: 'helvetica neue', sans-serif;
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 100px;
+}
+
+.large-box {
+  padding: 50px;
+  background-color: #f06;
+}
+
+.medium-box {
+  padding: 50px;
+  background-color: pink;
+}
+
+.small-box {
+  box-sizing: border-box;
+  height: 75px;
+  width: 75px;
+  background-color: white;
+}
