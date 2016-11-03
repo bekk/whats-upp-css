@@ -1,0 +1,32 @@
+
+
+
+
+.blackAndWhite {
+  filter: grayscale(100%);
+}
+
+.distort {
+  filter: blur(15px);
+}
+
+
+/* You detest the french, their opinion of a hearty breakfast is a coffe and a
+cigarette, and they have too many versions of bread. Apply a filter to turn them
+a hotter and friendlyer italian.
+
+You may have to turn their flag around a bit aswell*/
+
+
+.flag--italianify {
+  filter: hue-rotate(128deg);
+  transform: rotate(180deg);
+}
+
+
+.sticky {
+  filter: blur(20px);
+}
+.stickyBackground {
+  filter: contrast(50);
+}
