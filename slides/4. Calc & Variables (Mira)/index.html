@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BEKK-theme for remark</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../node_modules/remark-bekk/dist/bekk.css" type="text/css" rel="stylesheet">
+    <link href="styles/custom.css" type="text/css" rel="stylesheet">
+
+  </head>
+  <body class="bekk-black">
+    <textarea id="source">
+
+      class: front-page
+
+      # Variabler og kalkulasjoner
+
+      ## 
+
+
+      Mira Thoen Feiring
+
+      ---
+
+      class: agenda
+
+      # Agenda
+
+      * Hva
+      * Hvordan
+      * Hvorfor
+      * Calc
+
+      ---
+
+      # Syntaks
+
+      ```CSS
+      :root {
+        --primary-color: firebrick;
+      }
+
+      h1 {
+        color: var(--primary-color);
+      }
+
+      ```
+      ???
+      Custom properties
+
+      lar oss definere egne properties, og assigne arbitrere verdier til dem
+
+      var() funksjonen lar oss bruke disse verdiene i andre "ordentlige" properties
+      ---
+
+      # Scoping og inheritance
+
+      ```CSS
+      :root {
+        --color: red;
+      }
+
+      body {
+        --color: orange;
+      }
+
+      h2 {
+        color: var(--color);
+      }
+      ```
+      ???
+      Hvilken farge har h2?
+
+      ---
+
+      # Scoping og inheritance
+
+      ```CSS
+      :root {
+        --color: red;
+      }
+
+      body {
+        --color: orange;
+      }
+
+      h2 {
+        color: var(--color);
+      }
+      ```
+
+      `<h2>` vil alltid være orange, siden `<body>` har høyere spesifisitet enn `:root`
+      ???
+      pseudo-klassen root representerer topnivået i HTML-dokumentet
+
+      denne selektoren er gjerne et godt sted å definere custom properties,
+
+      siden vi da "forutsigbart" kan overskrive denne i andre selektorer med høyere spesifisitet.
+      ---
+
+      class: cols two
+
+      # Scoping og inheritance
+
+      .col[
+
+      ```CSS
+      :root { 
+        --color: blue; 
+      }
+
+      div { 
+        --color: green; 
+      }
+
+      .my-class {
+        --color: red;
+      }
+
+      * { 
+        color: var(--color); 
+      }
+
+      ```
+      ]
+
+      .col[
+
+      ```HTML
+      <p>I inherited blue from the root element!</p>
+      <div>I got green set directly on me!</div>
+      <div class="my-class">
+          While I got red set directly on me!
+          <p>I’m red too, because of inheritance!</p>
+      </div>
+
+      ```
+
+      ]
+
+      ???
+      Litt grundigere eksempel
+
+      ganske selvfoklarende
+
+      men la oss nå si at vi ikke vil at den siste `<p>`-en skal arve rødfargen
+
+      ---
+
+      class: cols two
+
+      # Scoping og inheritance
+
+      .col[
+
+      ```CSS
+      :root { 
+        --color: blue; 
+      }
+
+      div { 
+        --color: green; 
+      }
+
+      .my-class {
+        --color: red;
+      }
+
+      .my-class p {
+        --color: initial;
+      }
+
+      * { 
+        color: var(--color); 
+      }
+
+      ```
+      ]
+
+      .col[
+
+      ```HTML
+      <p>I inherited blue from the root element!</p>
+      <div>I got green set directly on me!</div>
+      <div class="my-class">
+          While I got red set directly on me!
+          <p>I’m not red anymore (or am I?)</p>
+      </div>
+
+      ```
+
+      ]
+
+      ???
+      Vi kan kansellere inheritance ved å sette verdien til initial.
+
+      Nå arver ikke p lenger variabel-verdien av my-class
+
+      men det er noe annet funky som skjer, så den er faktisk rød allikevel
+
+      kommer tilbake til dette
+
+      ---
+
+      # Fallback
+
+      ```CSS
+      :root {
+        --primary-color: firebrick;
+      }
+
+      h1 {
+        color: var(--primary-color, --fallback-color);
+      }
+
+      ```
+
+      ???
+      Hvis --primary-color ikke er definert, så settes color til --fallback
+
+      Det som skjedde på forrige slide er at var-funksjonen ikke klarte å evaluere
+      initial.
+
+      Så color for p blir aldri satt
+
+      men siden color uansett arves, så forblir p rød
+
+      Oppdaget dette ganske sent i går. Litt irriterende at devtools ikke gir noen gode feilmeldinger
+
+      MEN! Vi kan løse det ved å sette en fallback-verdi
+      ---
+
+      # Hvorfor?
+
+      Det finnes jo variabler i Sass, LESS, Stylus etc.
+
+      ```CSS
+      $font-stack: Helvetica, sans-serif;
+      $primary-color: #333;
+
+      body {
+        font: 100% $font-stack;
+        color: $primary-color;
+      }
+      .
+      .
+
+      ```
+      ???
+      Og masse mer css som bruker disse variablene
+      ---
+
+      # Hvorfor?
+
+      Det finnes jo variabler i Sass, LESS, Stylus etc.
+
+      ```CSS
+      $font-stack: Helvetica, sans-serif;
+      $primary-color: #333;
+
+      body {
+        font: 100% $font-stack;
+        color: $primary-color;
+      }
+      .
+      .
+
+      ```
+      Variabler i preprosessorer er statiske
+
+      ???
+      hvis jeg nå har lyst til å endre primary-color,
+
+      så kan jeg ikke bare endre variabel-deklarasjonen.
+
+      For den kompilerte css-en har jo ingen variabler
+
+      Men...
+      ---
+
+      # Dynamic theming
+
+      Trenger fortsatt litt javascript altså
+
+      ```
+      // READ
+      const rootStyles = getComputedStyle(document.documentElement);
+      const varValue = rootStyles.getPropertyValue('--property').trim();
+
+      // WRITE
+      document.documentElement.style.setProperty('--property', value);
+
+      ```
+      ???
+      Ja helt uten javascript klarer vi oss ikke
+      ---
+
+      # Dynamic theming
+
+      ```CSS
+      :root {
+        --primary-color: red;
+      }
+
+      p {
+        color: var(--primary-color);
+      }
+      .
+      .
+      ```
+
+      ```
+      document.documentElement.style.setProperty('--primary-color', 'green');
+
+      ```
+      ---
+
+      class: cols two
+
+      # Responsive variabler
+
+      .col[
+      Dette funker dårlig
+      ```CSS
+      $gutter: 4px;
+
+      section {
+        margin: $gutter;
+      }
+
+      @media (min-width: 1000px) {
+        $gutter: 16px;
+      }
+      
+      ```
+      ]
+
+      ???
+
+      Siden vi ikke kan endre på en variabel basert på hvilken @media-regel som trigges
+      
+      Så er eneste mulighet å definere en unik variabel per media query
+
+      for så å kode ut hele smøla flere ganger
+
+      ---
+
+      class: cols two
+
+      # Responsive variabler
+
+      .col[
+      Dette funker dårlig
+      ```CSS
+      $gutter: 4px;
+
+      section {
+        margin: $gutter;
+      }
+
+      @media (min-width: 1000px) {
+        $gutter: 16px;
+      }
+      
+      ```
+      ]
+
+      .col[
+      Dette funker helt fint
+      ```CSS
+      :root {
+        --gutter: 4px;
+      }
+
+      section {
+        margin: var(--gutter);
+      }
+
+      @media (min-width: 600px) {
+        :root {
+          --gutter: 16px;
+        }
+      }
+
+      ```
+
+      Tenk så mye "redundant" kode vi kan kvitte oss med!
+      ]
+
+      ???
+      Er det ikke flott?
+
+      ---
+
+      # Calc
+
+      - Beregninger skjer runtime!
+      - Vi kan mikse enheter!
+
+      ???
+      Flere har sikkert vært borti spesifikasjoner som
+
+      Den ene kolonnen skal være 40%, og den andre skal være 60% av bredden
+
+      Men ja, altså, det er uten den faste guttern på 20px da.
+
+      ---
+      # Calc
+
+      - Beregninger skjer runtime!
+      - Vi kan mikse enheter!
+
+      ```CSS
+      section {
+        width: calc(100% - 5px);
+      }
+      ```
+
+      ---
+      # Calc
+
+      - Beregninger skjer runtime!
+      - Vi kan mikse enheter!
+
+      ```CSS
+      section {
+        width: calc(100% - 5px);
+      }
+      ```
+
+      Gotchas:
+      - Husk mellomrom!
+      - Unit => number  =  OK
+      - Number => unit  =  KRÆSJ!
+
+      ---
+      # Calc
+
+      - Beregninger skjer runtime!
+      - Vi kan mikse enheter!
+
+      ```CSS
+      section {
+        width: calc(100% - 5px);
+      }
+      ```
+
+      Gotchas:
+      - Husk mellomrom!
+      - Unit => number  =  OK
+      - Number => unit  =  KRÆSJ!
+
+      ```CSS
+      calc(20px/3);         //NOPE
+      calc(20 * 2px - 5%);  //OK
+      calc(20px / 2px);     //NOPE
+      ```
+      ---
+
+      # Custom properties + calc = <3
+
+      ```CSS
+      :root {
+        --gutter: 4px;
+      }
+
+      section {
+        margin: var(--gutter);
+      }
+
+      @media (min-width: 600px) {
+        :root {
+          --gutter: 16px;
+        }
+      }
+
+      ```
+      Hva hvis guttern i stedet skal være akkurat dobbelt så stor?
+      ---
+
+      # Custom properties + calc = <3
+
+      ```CSS
+      :root {
+        --spacing-unit: 4px;
+        --gutter: var(--spacing-unit);
+      }
+
+      section {
+        margin: var(--gutter);
+      }
+
+      @media (min-width: 600px) {
+        :root {
+          --gutter: calc(2 * var(--spacing-unit));
+        }
+      }
+
+      ```
+
+      Men kanskje vi ikke har lyst til å bruke den samme enheten overalt?
+
+      ---
+
+      # Custom properties + calc = <3
+
+      ```CSS
+      :root {
+        --spacing-unit: 4;
+        --gutter: calc(var(--spacing-unit) * 1px);
+      }
+
+      section {
+        margin: var(--gutter);
+      }
+
+      @media (min-width: 600px) {
+        :root {
+          --gutter: calc(2 * var(--spacing-unit) * 0.5em);
+        }
+      }
+
+      ```
+
+      ---
+
+      class: center middle bekk-top
+
+      # OPPGAVER!
+
+
+    </textarea>
+
+  <script src="../../node_modules/remark-bekk/vendor/remark.min.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+    var slideshow = remark.create({
+      ratio: '16:9',
+      highlightStyle: 'monokai',
+      highlightLanguage: 'javascript'
+    });
+  </script>
+  <script src="../../node_modules/caniuse-component/scripts.js" async></script>
+
+  </body>
+</html>
