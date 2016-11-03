@@ -1,3 +1,10 @@
+:root {
+  --pallette-one: #BCE784;
+  --pallette-two: #5DD39E;
+  --pallette-three: #348AA7;
+  --pallette-four: #525174;
+  --pallette-five: #513B56;
+}
 
 /* cssPhotos */
 #filterdude{
@@ -82,4 +89,67 @@
 }
 .imageSepia {
   filter: sepia(100%);
+}
+
+
+.blendLetters {
+  font-size: 8rem;
+  font-weight: 700;
+  letter-spacing: -1.50rem;
+  font-family: sans-serif;
+  isolation: isolate;
+}
+.blendLetters span{
+  mix-blend-mode: multiply;
+}
+.blendLetters span:nth-child(5n+0){
+  color: var(--pallette-one);
+}
+.blendLetters span:nth-child(5n+1){
+  color: var(--pallette-two);
+}
+.blendLetters span:nth-child(5n+2){
+  color: var(--pallette-three);
+}
+.blendLetters span:nth-child(5n+3){
+  color: var(--pallette-four);
+}
+.blendLetters span:nth-child(5n+4){
+  color: var(--pallette-five);
+}
+.split .blendedNature {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  max-height: none !important;
+  max-width: 50%;
+  border: 0;
+}
+.blendedNature {
+  width: 50%;
+  float: left;
+  overflow: hidden;
+  background: url(../assets/fjell.jpg);
+  background-position: center;
+  background-size: cover;
+  isolation: isolate;
+
+}
+.blendedNature img {
+  width: 400%;
+  mix-blend-mode: screen;
+  animation-duration: 10s;
+  animation-name: backAndForth;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes backAndForth {
+  from{
+    right: 0;
+  }
+  to {
+    right: -200%;
+  }
+
 }
