@@ -1,9 +1,23 @@
 /*
 Her er det norske flagget, men det er jo kjedelig at det ikke er responsivt!
-BESKRIVELSE
+
+Oppgaven er å gjøre nettopp dette: Få flagge til å tilpasse seg smalere skjermer, uten at forholdet mellom noen av komponentene endrer seg.
+Dimensjonene til det norske flagget finner du i bildefila flag.png.
+
+For å klare å beholde forholdet mellom høyde og bredde, må vi bruke lengdeenheten vw (viewport width). 100vw tilsvarer 100% av bredden til nettleseren.
+
+Et godt sted å starte kan være å bytte ut alle de statiske lengdene med variabler for høyde, lengde og tykkelse.
+Bruk calc til å regne ut verdiene, basert på bredden på skjermen.
+
+Når flagget er responsivt, hva med å slenge på en media query, slik at det ikke blir breiere enn si 1000px?
+
+Lykke til!
+
+Bonus: La fargene være variabler, og lag noen andre nordiske flagg (kanskje med litt inline styling?)
+       Hvis dette skal gjøres skikkelig, så må jo forholdet mellom komponentene kanskje endres litt også?
+
 
 */
-
 
 
 body {
