@@ -1,7 +1,10 @@
 /*
 Oppgave 2
-Denne oppgaven er passe "fri". Tanken er å eksperimentere med dynamisk endring av variabler.
-De fleste av dere har sikkert gjort dette før, men tenk at det nå kun er nødvendig sette variabelen ETT sted
+Denne oppgaven er ganske fri, og går ut på å eksperimentere med dynamisk endring av variabler.
+De fleste av dere har sikkert gjort dette før, men tenk at det nå kun er nødvendig sette variabelen ETT sted!
+Siden properties satt med var(--value), vil de endres dynamisk dersom --value endrer seg.
+
+Det er imidlertid ikke mulig å endre --property uten litt javascript (enda). Lag gjerne egen javascript, eller bare bruk det som ligger ved.
 
 
 1. Sett input-slideren til å styre ulike properties på bildet
@@ -11,6 +14,7 @@ De fleste av dere har sikkert gjort dette før, men tenk at det nå kun er nødv
         -border-radius
         ++++
         Bruk calc til å legge på riktige enheter
+        (Det er selvfølgelig lov til å endre min- og maxverdier på inputfeltene)
 
 Bonus: Prøv med et tekstinput
 Bonus: Animer hvor musen er
