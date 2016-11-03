@@ -12,6 +12,7 @@ slik at ikke andre kan komme og le av det, eller vise det til politiet.
 Det kan nok gjøres med mye forskjellige filte,
 men det er et som passer veldig bra til slikt.*/
 .distort {
+  filter: blur(15px);
 }
 
 
@@ -22,6 +23,8 @@ ikke riktig sikker på. Så kanskje det er greit å vende på det en gang alikev
 
 
 .flag--italianify {
+  filter: hue-rotate(128deg);
+  transform: rotate(180deg);
 }
 
 
@@ -34,8 +37,10 @@ men da får man mye tips!
 */
 
 .sticky {
+  filter: blur(20px);
 }
 .stickyBackground {
+  filter: contrast(50);
 }
 
 /*
@@ -50,7 +55,9 @@ går til midlertidig uløst når night mode skrus på)
 */
 
 .nightMode {
+  filter: invert(100%);
 }
 
 .nightMode img {
+  filter: invert(100%);
 }

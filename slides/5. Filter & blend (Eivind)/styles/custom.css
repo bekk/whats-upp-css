@@ -6,6 +6,11 @@
   --pallette-five: #513B56;
 }
 
+.oneAnswer{
+  font-size: 40px;
+  margin-top: 40px;
+}
+
 /* cssPhotos */
 #filterdude{
   width: 100%;

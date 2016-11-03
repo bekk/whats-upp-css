@@ -5,25 +5,35 @@
   --pallette-four: #525174;
   --pallette-five: #513B56;
 }
-
-body {
-  text-align: center;
-  background-color: var(--pallette-five);
-  background-color: #eaebec;
-  color: var(--pallette-one);
-  color: #333;
-  font-family: helvetica, futura
+body{
+  margin: 0;
 }
 
-h1 {
-
+.tasks {
+  text-align: center;
+  background-color: #eee;
+  color: var(--pallette-five);
+  font-family: helvetica, futura;
+  margin-top: -25px;
+  padding-top: 50px;
 }
 
 .task {
   width: 75%;
   max-width: 1200px;
   display: inline-block;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
+
+button {
+  background: var(--pallette-two);
+  height: 40px;
+  margin: 30px;
+  border: 0px solid transparent;
+  font-size: 20px;
+}
+
 div.task {
   height: 50vh;
   position: relative;
