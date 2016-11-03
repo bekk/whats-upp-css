@@ -21,6 +21,11 @@ Petter Samuelsen
 
 04/09/2016
 
+???
+
+Hva er det? Og hvorfor ikke bare bruke `<table>`?
+Er det noen som kjenner til flexbox? Noen som aldri har prøvd det før?
+
 ---
 
 class: agenda
@@ -33,9 +38,19 @@ class: agenda
 * Oppgaver
 * Recap
 
+???
+
+# Agenda
+
+* Hva er flexbox?
+* Hvem støtter flexbox?
+* Hva løser flexbox?
+* Oppgaver
+* Recap
+
 ---
 
-# Hva er flexbox
+# Hva er flexbox?
 
 * Flexbox gjør det mulig for et element &aring; endre sine underelementer for å best fylle
 det tilgjengelige rommet.
@@ -55,6 +70,8 @@ eller forminsker dem for &aring; forhindre overflyt.
 * En flex-container ekspanderer sine underelementer for å fylle tomrom
 eller forminsker dem for &aring; forhindre overflyt.
 
+Ok, men hva betyr dette?? Det er det vi skal snakke om i dag. Men først skal vi se på hvordan det støttes.
+
 ---
 
 # Hva med støtte?
@@ -64,21 +81,31 @@ eller forminsker dem for &aring; forhindre overflyt.
   data-browsers="ie safari firefox chrome edge">
 </ul>
 
-* 98.58% av nordmenn støtter det
+* 98.58% av browsere i Norge støtter det
 * 97.12% på verdensbasis
 
 ???
 
-* 98.58% av nordmenn støtter det
+* 98.58% av browsere brukt av nordmenn støtter det
 * 97.12% på verdensbasis
 
-Kan man bruke det? Tja.
+Støttes ikke i IE 9 og nedover med en delvis støtte for IE 10 og 11.
+
+Støttes i:
+Safari 6.1+
+Firefox 28+
+Chrome 21+
+Edge 12+
 
 ---
 
 class: cols two
 
 # Et lite tilbakeblikk
+
+???
+
+Men først et lite tilbakeblikk.
 
 --
 
@@ -113,11 +140,30 @@ spacer.gif, &nbsp; og <br/>
     ![](images/Table.png)
   ]
 
+???
+
+Tidligere ble tables mye brukt for å lage layouts.
+Da hadde man en hel del nasty hacks for å posisjonere elementer riktig som å bruke en 1x1px spacer.gif, en hel masse non breaking spaces og breaks.
+
+Her ser man et lite eksempel på hvordan man implementerte holy grail layout med tables.
+
+Er dette en god idé?
+
+Jeg føler at shouldiusetablesforlayout.com oppsummerer det nokså bra.
+
 ---
 
 class: cols two
 
 # Hva løser flexbox?
+
+???
+
+I dag kommer jeg til å vise eksempler på vanlig layoutproblemer man har med css og hvordan man kan løse det med flexbox.
+
+Noe som ofte er litt knotete er horisontal posisjonering ved hjelp av floats og sentrering av elementer vertikalt og horisontalt.
+
+La oss se på et eksempel der man vil sentrere et element vertikalt som har en KJENT høyde.
 
 --
 
@@ -153,6 +199,11 @@ Uff 😕
     ![](images/CenterVertically.png)
   ]
 
+???
+
+* Child må ha position absolute, som betyr at parent må ha position relative
+* Negativ margin-top, der man må huske å trekke fra padding, border etc. dersom border-box ikke er satt
+
 ---
 
 class: cols two
@@ -187,12 +238,28 @@ Akk 😫
     ![](images/CenterVertically.png)
   ]
 
+???
+
+Her ser vi et eksempel på hvordan man løser det samme problemet, bare at høyden på child er UKJENT.
+
+Det gjøres ved hjelp av translateY(-50%)
+
+Går det an å gjøre dette på en bedre måte?
 
 ---
 
 class: middle center
 
 # Flexbox til unnsetning!! 👨‍🚒
+
+???
+
+Vis demo.html
+
+display: flex;
+align-items: center;
+
+justify-content: center;
 
 ---
 
@@ -257,6 +324,13 @@ Lykke til! 😬👨‍🚒
 
 # Recap
 
+???
+
+Hva har vi lært i dag?
+* Flexbox er konge!
+* Intro til flexbox
+* Laget en holy grail layout
+
 --
 
 * Flexbox er konge!
@@ -276,11 +350,20 @@ class: middle center
 
 # Burde jeg bruke flexbox?
 
+???
+
+Burde jeg bruke flexbox?
+
 ---
 
 class: middle center
 
 # Tja*
+
+???
+
+Et helt klinkende klart; tja.
+Hvis du ikke har behov før å støtte eldre IE-browsere så ville jeg sagt kjør på.
 
 ---
 
