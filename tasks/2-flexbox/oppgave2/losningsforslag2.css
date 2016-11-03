@@ -1,0 +1,36 @@
+/*
+Løsningsforslag oppgave 2
+ */
+
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+/* Styling. Ikke rør. */
+body {
+  margin: 0;
+  font-family: 'Helvetica';
+  color: #fefefe;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+header, footer, .left, .right, .middle {
+  padding: 1.3em;
+}
+
+header, footer {
+  background-color: #FF8440;
+}
+
+.left, .right, .middle {
+  background-color: #8FD1FF;
+}
+
+.middle {
+  margin: 0 10px;
+}
+

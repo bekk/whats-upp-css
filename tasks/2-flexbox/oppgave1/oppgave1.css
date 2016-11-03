@@ -43,30 +43,3 @@ header {
 footer {
 
 }
-
-
-
-/*
-  Styling av oppgaven. Ikke noe interessant å se her :-)
-*/
-body {
-  margin: 0;
-  font-family: 'Helvetica';
-  color: #fefefe;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  line-height: 4em;
-}
-
-header, footer {
-  background-color: #FF8440;
-}
-
-.left, .right, .middle {
-  background-color: #8FD1FF;
-}
-
-.middle {
-  margin: 0 10px;
-}

@@ -20,3 +20,16 @@ body {
 .left, .right {
   flex: 0 0 10em; /* 10 ganger størrelsen av elementets fontstørrelse */
 }
+
+.search-input {
+  border: none;
+  padding: 1em;
+}
+
+.search-button {
+  border: none;
+  background-color: #8FD1FF;
+  color: #fff;
+  padding: 0 2em;
+  text-transform: uppercase;
+}
