@@ -1,0 +1,30 @@
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.media-container {
+  text-align: left;
+  background-color: #fefefe;
+  border-radius: 3px;
+}
+
+.media-text, .media-footer button {
+  color: #6B6B6B;
+  letter-spacing: 0;
+  text-transform: none;
+  margin: 0;
+  line-height: 1.5em;
+  display: block;
+}
+
+.media-footer {
+  border-top: 1px #ddd solid;
+}
+
+.media-footer button {
+  border: none;
+  background-color: transparent;
+  font-size: 1em;
+}
+

@@ -1,0 +1,26 @@
+.media-container {
+  padding: 1em;
+}
+
+.media-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.media-image {
+  margin-right: 1em;
+}
+
+.media-text {
+  flex: 1;
+}
+
+.media-footer {
+  display: flex;
+  margin: 1em 0 0 0;
+  padding: 1em 0 0 0;
+}
+
+.media-footer button:last-of-type {
+  margin-left: auto;
+}
