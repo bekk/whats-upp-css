@@ -65,15 +65,15 @@ class: agenda
 
 # Agenda
 
-* Introduksjon
+* Introduksjon 8:30
 * Flexbox med <em class="red">Petter</em>
 * Grids med <em class="red">Hanne og Helge</em>
-* Lunsj?
+* Lunsj
 * Calc og css-variabler med <em class="red">Mira</em>
 * Filter og Blend-modes med <em class="red">Eivind</em>
-* Css-shapes og Columns med <em class="red">Andrew</em>
-* Bonus?
-* Pils!
+* Shape-outside og Columns med <em class="red">Andrew</em>
+* Oppsummering
+* Quiz!
 
 <div class="css-fail">CSS is Awsome!</div>
 
@@ -95,14 +95,22 @@ Så blir Eivind litt kunstnerisk med filters og blend mode! Kreativt innslag fra
 
 Så avslutter vi med enda flere layout-metoder her mer rettet mot typografi med css-shapes og columns fra Andrew. 
 
-Har vi ekstra tid kjører på med litt bonus materiale, ellers blir det vel pils på skuret?
-
 Noen spørsmål?
 
-Ok, da skal jeg først fortelle om noe nytt og grunnleggende i CSS.
+---
 
+# Nettleserflagg
 
+ * chrome://flags/#enable-experimental-web-platform-features
+ * firefox:  about:config => layout.css.grid.enabled
+ * Oppgaver og slides: https://github.com/bekk/whats-upp-css
 
+???
+
+Vi trenger å sette noen flagg, så de som ikke har gjort det, gjør det!
+Last også ned fra github de som ikke har gjort det, oppgavene, slides, og løsningforslag vil ligge der.
+
+Ok, da skal jeg først fortelle om noe relativt nytt og grunnleggende i CSS.
 
 ---
 
@@ -244,12 +252,22 @@ Men her har vi en liten logisk brist, støtter man ikke display: flex, kan det h
 ---
 
 # Nettleserstøtte
+
+  [http://caniuse.com/#feat=css-featurequeries](http://caniuse.com/#feat=css-featurequeries)
   <ul id="caniuse--result-list"
     data-propName="css-featurequeries"
     data-browsers="ie safari firefox chrome edge">
   </ul>
 
   Dårlig nytt for IE der altså
+
+???
+
+Her ser vi oversikten fra caniuse.com for feature-queries.
+For de som ikke kjenner til caniuse.com så er det et fantastisk verktøy, sammen med mdn (Mozilla Developer Network).
+Du kan se hvor utbredt støtten er for en spesifikk browser-feature.
+
+Det er god støtte i alle nettlesere, untatt IE, men det er noe vi kan jobbe med.
 
 ---
 
@@ -268,7 +286,35 @@ Men her har vi en liten logisk brist, støtter man ikke display: flex, kan det h
 
 Ved å bruke prinsippene fra progressive-enhancement, og skrive fallback-koden først er vi sikre på at IE ikke blir sittende igjen i grøten.
 
+
 Også trenger det naturligvis ikke se likt ut i alle nettlesere. Sitter man med gammel IE versjon, kan man kanskje leve med at det er litt stusselig, så får de god grunn til å oppgradere.
+
+---
+
+# Progressive Enhancement
+
+  ```css
+  
+  @supports (display: flex) and not (display: grid) {
+    div { 
+      display: flex; 
+      /* halv million linjer css */
+    } 
+  }
+
+  @supports (display: grid)  {
+    div { display: grid; }
+  }
+
+  div {
+    /*... million linjer css */
+  }
+  ```
+
+???
+
+Det fungerer naturligvis cascading som man skulle forventet, så siste treffende regel vil være gjeldene.
+Her ville man for eksempel tatt i bruk den millioen linjer kode fra siste linje.
 
 Her har dere altså en grunnlegende egenskap jeg tenker vil være nyttig å se på utover dagen, så vi passer på at det vi gjør fungerer for alle. 
 ---
