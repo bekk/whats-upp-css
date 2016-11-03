@@ -14,9 +14,8 @@ class: front-page
 
 # Flexbox
 
-## Hvorfor ikke bare bruke `<table>`?
+## Hva er det? Og hvorfor ikke bare bruke `<table>`?
 
-[Github](https://github.com/gnab/remark)
 
 Petter Samuelsen
 
@@ -31,8 +30,8 @@ class: agenda
 * Hva er flexbox?
 * Hvem støtter flexbox?
 * Hva løser flexbox?
-* Hvordan bruker man flexbox?
 * Oppgaver
+* Recap
 
 ---
 
@@ -77,11 +76,14 @@ Kan man bruke det? Tja.
 
 ---
 
-# Hva løser flexbox?
+class: cols two
+
+# Et lite tilbakeblikk
 
 --
 
-* `<table>` for å lage kolonner
+  .col[
+* `<table>` for å lage kolonner:
 
 ```html
 <table>
@@ -98,14 +100,22 @@ Kan man bruke det? Tja.
   </tr>
 </table>
 ```
---
 ```html
-spacer.gif, &nbsp; og <br/> for å lage spacings
+spacer.gif, &nbsp; og <br/>
 ```
---
 [shouldiusetablesforlayout.com](http://shouldiusetablesforlayout.com/)
 
+  ]
+
+  .col[
+    * Holy Grail Layout:
+
+    ![](images/Table.png)
+  ]
+
 ---
+
+class: cols two
 
 # Hva løser flexbox?
 
@@ -113,6 +123,7 @@ spacer.gif, &nbsp; og <br/> for å lage spacings
 
 Vertikal sentrering med *kjent* høyde:
 
+  .col[
 ```html
 <div class="parent">
   <div class="child"></div>
@@ -128,20 +139,29 @@ Vertikal sentrering med *kjent* høyde:
   position: absolute;
   top: 50%;
   height: 100px;
-  margin-top: -50px; /* minus padding dersom border-box ikke er satt */
+  margin-top: -50px; /* minus padding dersom */
+  /* border-box ikke er satt */
 }
 
 ```
---
+
 Uff 😕
 
+]
+
+  .col[
+    ![](images/CenterVertically.png)
+  ]
 
 ---
+
+class: cols two
 
 # Hva løser flexbox?
 
 Vertikal sentrering med *ukjent* høyde:
 
+  .col[
 ```html
 <div class="parent">
   <div class="child"></div>
@@ -159,8 +179,13 @@ Vertikal sentrering med *ukjent* høyde:
   transform: translateY(-50%);
 }
 ```
---
+
 Akk 😫
+]
+
+  .col[
+    ![](images/CenterVertically.png)
+  ]
 
 
 ---
@@ -208,6 +233,54 @@ class: cols two
   .col[
     ![](images/DirectionColumn.png)
   ]
+
+---
+
+# Oppgaver
+
+Er dette ukjent?
+```css
+display, justify-content, align-self, align-items, flex-direction, order
+```
+
+* [flexboxfroggy.com](http://flexboxfroggy.com/)
+
+Nei?
+```
+$ open tasks/2-flexbox/oppgave1/oppgave1.html
+```
+
+
+Lykke til! 😬👨‍🚒
+
+---
+
+# Recap
+
+--
+
+* Flexbox er konge!
+
+--
+
+* Intro til flexbox
+
+--
+
+* Holy Grail Layout
+  - Søkefelt, sticky footer, mediekort
+
+---
+
+class: middle center
+
+# Burde jeg bruke flexbox?
+
+---
+
+class: middle center
+
+# Tja*
 
 ---
 
