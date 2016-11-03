@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BEKK-theme for remark</title>
+    <title>Filter og Blend Modes</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../../node_modules/remark-bekk/dist/bekk.css" type="text/css" rel="stylesheet">
     <link href="styles/custom.css" type="text/css" rel="stylesheet">
@@ -39,15 +39,20 @@
 
       ---
       name: cssPhotos
+      class: center middle
 
-      # Hva er filter?
+      # Filter
 
       Endrer lys og farge.
 
       Syntaks:
 
       ```CSS
-      filter: <filter-function> [<filter-function>]* | none ;
+      filter: [<filter-function>*] | none ;
+      ```
+      ```CSS
+      filter-function: blur() | brightness() | contrast() | drop-shadow() |
+        grayscale() | hue-rotate() | invert() | opacity() | sepia() | saturate()
       ```
 
       ---
@@ -94,6 +99,47 @@
       ![bilde](assets/auau.jpg)
       ]
 
+      ---
+      class: center middle
+
+      #Blend modes
+      .blendLetters[
+      .letter[b].letter[l].letter[e].letter[n].letter[d].letter[-].letter[m].letter[o].letter[d].letter[e]
+      ]
+
+      ---
+
+      # 3 CSS-properties
+
+      ## Blandingsfunksjoner
+
+      ```CSS
+      background-blend-mode: <blending-function> | none;
+        ```
+      ```CSS
+      blend-mode: normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn |
+      hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity
+      ```
+      ```CSS
+      mix-blend-mode: <blending-function> | none ;
+      ```
+      ## Hvilke objekter skal blandes
+
+      ```CSS
+      isolation: isolate | none;
+      ```
+      ---
+      #Funksjonsgreier
+
+      ---
+      class: split
+      # eksempel
+
+      .blendedNature[
+      ![bilde](assets/skiez.jpg)
+      ]
+
+      ---
     </textarea>
 
   <script src="../../node_modules/remark-bekk/vendor/remark.min.js" type="text/javascript"></script>

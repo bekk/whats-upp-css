@@ -1,0 +1,58 @@
+:root {
+  --pallette-one: #BCE784;
+  --pallette-two: #5DD39E;
+  --pallette-three: #348AA7;
+  --pallette-four: #525174;
+  --pallette-five: #513B56;
+}
+
+body {
+  text-align: center;
+  background-color: var(--pallette-five);
+  background-color: #eaebec;
+  color: var(--pallette-one);
+  color: #333;
+  font-family: helvetica, futura
+}
+
+h1 {
+
+}
+
+.task {
+  width: 75%;
+  max-width: 1200px;
+  display: inline-block;
+}
+div.task {
+  height: 50vh;
+  position: relative;
+}
+.stickyBackground{
+  background: #eaebec;
+}
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);;
+}
+.animate {
+  animation-duration: 2s;
+  animation-name: backAndForth;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes backAndForth {
+  from{
+    margin-left: -25%;
+  }
+  to {
+    margin-left: 25%;
+  }
+
+}
