@@ -6,9 +6,23 @@
   --pallette-five: #513B56;
 }
 
+.column {
+  width: 49%;
+  display: inline-block;
+  float: left;
+}
+.columnThree {
+  width: 33%;
+  display: inline-block;
+  float: left;
+}
+.column img {
+  background: white;
+}
+
 .oneAnswer{
-  font-size: 40px;
-  margin-top: 40px;
+  font-size: 60px;
+  line-height: 250px;
 }
 
 /* cssPhotos */

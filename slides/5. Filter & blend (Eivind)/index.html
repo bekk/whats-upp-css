@@ -27,14 +27,12 @@
       # Agenda
 
       * Hva er filter
-      * Bilderedigering
       * Hvordan funker det?
       * Kan det brukes?
 
       * Hva er blend modes
       * Hvordan funker det?
       * Kan det brukes?
-      * Trix
 
 
       ---
@@ -135,7 +133,33 @@
 
       # 3 CSS-properties
 
-      ## Blandingsfunksjoner
+      ---
+
+      # 3 CSS-properties
+
+
+      ```CSS
+      background-blend-mode: <blending-function> | none;
+        ```
+
+
+      ---
+
+      # 3 CSS-properties
+
+
+      ```CSS
+      background-blend-mode: <blending-function> | none;
+        ```
+      ```CSS
+      blend-mode: normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn |
+      hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity
+      ```
+
+      ---
+
+      # 3 CSS-properties
+
 
       ```CSS
       background-blend-mode: <blending-function> | none;
@@ -147,17 +171,91 @@
       ```CSS
       mix-blend-mode: <blending-function> | none ;
       ```
-      ## Hvilke objekter skal blandes
+      ---
+
+      # 3 CSS-properties
+
+
+      ```CSS
+      background-blend-mode: <blending-function> | none;
+        ```
+      ```CSS
+      blend-mode: normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn |
+      hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity
+      ```
+      ```CSS
+      mix-blend-mode: <blending-function> | none ;
+      ```
 
       ```CSS
       isolation: isolate | none;
       ```
       ---
-      #Funksjonsgreier
 
+      #Hvordan funker det?
+      .something[
+      .column[
+      bakgrunnskalkulering
+      ]
+      .column[
+      ![bilde](https://www.w3.org/TR/compositing-1/examples/simple_backdrop.svg)
+      ]
+      ]
+      .column[
+      blending
+      ]
+      .column[
+      Cm = B(Cb, Cs)
+
+      *hvor Cm er resultatfarge, B er funksjonen, Cb er bakgrunnsfargen, og Cs er kilde-fargen til elementet
+      ]
+
+      ---
+
+      #Hvordan funker det?
+      .something[
+      .columnThree[
+      Normal
+      ]
+      .columnThree[
+      B(Cb,Cs)=Cs
+      ]
+      .columnThree[
+      ![bilde](https://www.w3.org/TR/compositing-1/examples/normal.png)
+      ]
+
+      ]
+      .columnThree[
+      multiply
+      ]
+      .columnThree[
+      B(Cb,Cs)=Cb*Cs
+      ]
+      .columnThree[
+      ![bilde](https://www.w3.org/TR/compositing-1/examples/multiply.png)
+      ]
       ---
       class: split
       # eksempel
+
+      Blending function
+      <select class="blend-select" onchange="document.getElementsByClassName('blendedNature')[0].style.mixBlendMode = this.value;">
+        <option>screen</option>
+        <option>multiply</option>
+        <option>overlay</option>
+        <option>darken</option>
+        <option>lighten</option>
+        <option>color-dodge</option>
+        <option>color-burn</option>
+        <option>hard-light</option>
+        <option>soft-light</option>
+        <option>difference</option>
+        <option>exclusion</option>
+        <option>hue</option>
+        <option>saturation</option>
+        <option>color</option>
+        <option>luminosity</option>
+      </select>
 
       .blendedNature[
       ![bilde](assets/skiez.jpg)

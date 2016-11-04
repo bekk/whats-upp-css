@@ -1,0 +1,98 @@
+/*Endre gjerne fargene for å se hvordan det påvirker blandinga*/
+.modeComparison .foreground {
+  background: var(--pallette-five);
+}
+
+.modeComparison .background {
+  background: var(--pallette-three);
+}
+
+
+
+
+
+/* Da er det bare å ta i et tak. Her er tanken å sette alle blend-modene.
+Om det blir litt mye kodeapeaktig er det lov å lime inn fra lf.
+Uncomment isoleringen om du ikke vil blande med bakgrunnen.
+*/
+/*
+.modeComparison {
+  isolation: isolate;
+}
+*/
+.modeComparison--multiply .circle {
+  mix-blend-mode: multiply;
+}
+.modeComparison--screen .circle{
+  mix-blend-mode: multiply;
+}
+.modeComparison--overlay .circle{
+  mix-blend-mode: overlay;
+}
+.modeComparison--darken .circle{
+  mix-blend-mode: darken;
+}
+.mdeComparison--lighten .circle{
+  mix-blend-mode: lighten;
+}
+.modeComparison--color-dodge .circle{
+  mix-blend-mode: color-dodge;
+}
+.modeComparison--color-burn .circle{
+  mix-blend-mode: color-burn;
+}
+.modeComparison--hard-light .circle{
+  mix-blend-mode: hard-light;
+}
+.modeComparison--soft-light .circle{
+  mix-blend-mode: soft-light;
+}
+.modeComparison--difference .circle{
+  mix-blend-mode: difference;
+}
+.modeComparison--exclusion .circle{
+  mix-blend-mode: exclusion;
+}
+.modeComparison--hue .circle{
+  mix-blend-mode: hue;
+}
+.modeComparison--saturation .circle{
+  mix-blend-mode: saturation;
+}
+.modeComparison--color .circle{
+  mix-blend-mode: color;
+}
+.modeComparison--luminosity .circle{
+  mix-blend-mode: luminocity;
+}
+
+/*
+På tide med litt kunstnerisk frihet. Under ligger klassene for oppsettene på bunden
+av oppgavene. Lag noe fett, eller noe rart. Eller kanskje bare noe i det hele tatt.
+Internett er fullt av bilder, lek med dem.
+*/
+
+.winterNight {
+
+}
+.winterNight .background{
+
+}
+.winterNight .foreground{
+  mix-blend-mode: difference;
+}
+
+.taxi {
+
+}
+
+.taxi .background{
+
+}
+.taxi .foreground{
+  mix-blend-mode: color-burn;
+}
+
+.stars img{
+  mix-blend-mode: screen;
+}
