@@ -239,7 +239,7 @@
       # eksempel
 
       Blending function
-      <select class="blend-select" onchange="document.getElementsByClassName('blendedNature')[0].style.mixBlendMode = this.value;">
+      <select class="blend-select" onchange="document.getElementsByClassName('blendedOverlayImage')[0].style.mixBlendMode = this.value;">
         <option>screen</option>
         <option>multiply</option>
         <option>overlay</option>
@@ -255,11 +255,14 @@
         <option>saturation</option>
         <option>color</option>
         <option>luminosity</option>
+        <option>normal</option>
       </select>
 
       .blendedNature[
-      ![bilde](assets/skiez.jpg)
+      <img class="blendedOverlayImage" src="assets/skiez.jpg" alt="bilde">
       ]
+      
+
       ---
       class: center
       # Browserstøtte
