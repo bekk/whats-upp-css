@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "http-server"
+    "serve": "http-server",
+    "watch": "concurrently --kill-others \"npm run serve\" \"livereload .\""
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,8 @@
     "remark-bekk": "github:bekk/remark"
   },
   "devDependencies": {
-    "http-server": "^0.9.0"
+    "concurrently": "^3.1.0",
+    "http-server": "^0.9.0",
+    "livereload": "^0.6.0"
   }
 }
