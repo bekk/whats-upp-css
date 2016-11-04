@@ -1,0 +1,99 @@
+/*Endre gjerne fargene for å se hvordan det påvirker blandinga*/
+.modeComparison .foreground {
+  background: var(--pallette-five);
+}
+
+.modeComparison .background {
+  background: var(--pallette-three);
+}
+
+
+
+
+
+/* Da er det bare å ta i et tak. Her er tanken å sette alle blend-modene.
+Om det blir litt mye kodeapeaktig er det lov å lime inn fra lf.
+Uncomment isoleringen om du ikke vil blande med bakgrunnen.
+*/
+/*
+.modeComparison {
+  isolation: isolate;
+}
+*/
+.modeComparison--multiply .circle {
+
+}
+.modeComparison--screen .circle{
+
+}
+.modeComparison--overlay .circle{
+
+}
+.modeComparison--darken .circle{
+
+}
+.mdeComparison--lighten .circle{
+
+}
+.modeComparison--color-dodge .circle{
+
+}
+.modeComparison--color-burn .circle{
+
+}
+.modeComparison--hard-light .circle{
+
+}
+.modeComparison--soft-light .circle{
+
+}
+.modeComparison--difference .circle{
+
+}
+.modeComparison--exclusion .circle{
+
+}
+.modeComparison--hue .circle{
+
+}
+.modeComparison--saturation .circle{
+
+}
+.modeComparison--color .circle{
+
+}
+.modeComparison--luminosity .circle{
+
+}
+
+/*
+På tide med litt kunstnerisk frihet. Under ligger klassene for oppsettene på bunden
+av oppgavene. Lag noe fett, eller noe rart. Eller kanskje bare noe i det hele tatt.
+Internett er fullt av bilder, lek med dem.
+Lov å leke med filter samtidig.
+*/
+
+.winterNight {
+
+}
+.winterNight .background{
+
+}
+.winterNight .foreground{
+
+}
+
+.taxi {
+
+}
+
+.taxi .background{
+
+}
+.taxi .foreground{
+
+}
+
+.stars img{
+
+}

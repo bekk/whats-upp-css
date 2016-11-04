@@ -25,7 +25,15 @@ body{
   margin-top: 40px;
   margin-bottom: 40px;
 }
-
+div.task {
+  height: 50vh;
+  position: relative;
+}
+div.frame {
+  position: relative;
+  text-align: left;
+  height: auto;
+}
 button {
   background: var(--pallette-two);
   height: 40px;
@@ -33,23 +41,31 @@ button {
   border: 0px solid transparent;
   font-size: 20px;
 }
-
-div.task {
-  height: 50vh;
-  position: relative;
-}
 .stickyBackground{
   background: #eaebec;
+}
+.circles {
+  clear: both;
 }
 .circle {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: black;
+  position: relative;
+  display: inline-block;
+}
+.circle--centered {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateY(-50%) translateX(-50%);;
+  transform: translateY(-50%) translateX(-50%);
+}
+.circle--forGooey {
+  background-color: black;
+}
+.circle--single {
+  width: 200px;
+  height: 200px;
 }
 .animate {
   animation-duration: 2s;
@@ -64,5 +80,49 @@ div.task {
   to {
     margin-left: 25%;
   }
+}
 
+.foreground {
+  right: 7%;
+}
+
+.background {
+  left: 7%;
+}
+
+.modeComparison {
+  overflow: auto;
+  width: 33%;
+  min-width: 250px;
+  float: left;
+  margin: 20px auto;
+  height: 250px;
+  position: relative;
+}
+
+
+.freestyle {
+  clear: both;
+}
+
+.half {
+  width: 50%;
+}
+.full {
+  width: 100%;
+}
+.winterNight .foreground {
+  background: var(--pallette-two);
+}
+.overlayText {
+  position: absolute;
+  font-size: 30px;
+  font-weight: 600;
+  top: 10%;
+  margin: 10%;
+}
+
+.stars{
+  background: url(daaner.png) center;
+  background-size: cover;
 }
