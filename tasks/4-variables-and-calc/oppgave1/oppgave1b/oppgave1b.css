@@ -24,7 +24,7 @@ Oppgave 1b: Arving og egendefinerte short-/longhands
 }
 
 .large-box {
- --rot-angle: 20deg;
+ // --rot-angle: 20deg;
 }
 
 
